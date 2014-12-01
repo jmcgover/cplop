@@ -113,11 +113,13 @@ public class RunTests{
       
 
       ArrayList<Pyroprint> allPyroprints = new ArrayList<Pyroprint>(tree.getAllPyroprints().values());
+      Pyroprint deerThing = tree.getPyroprint("Deer Mouse","MM0899","Rt-001","159") ;
       KAlphaNearest test = new KAlphaNearest(tree.getPyroprint("Deer Mouse","MM0899","Rt-001","159"), 17, .95);
 
       System.out.println("Calculating all...");
       KAlphaNearest allTest = null;
       Filter<Pyroprint> regionFilter = new RegionFilter();
+      Filter<Pyroprint> isolateFilter = new IsolateFilter();
 
       ArrayList<Species> speciesList = new ArrayList<Species>(tree.getAllSpecies().values());
       ArrayList<RegionAccuracy<Species>> speciesAccuracy = new ArrayList<RegionAccuracy<Species>>();
@@ -129,44 +131,22 @@ public class RunTests{
       for (Species s : speciesList) {
          System.out.println(s);
       }
-      System.out.printf("k: %d alpha: %.3f\n",k,alpha);
-      for (Species s : speciesList) {
-         specAcc1623 = new RegionAccuracy<Species>(s,"16-23");
-         specAcc235 = new RegionAccuracy<Species>(s,"23-5");
-         for (Pyroprint p : s.getPyroprints().values()) {
-            if (p.getAppliedRegion().equals("16-23")) {
-               currentAccObj = specAcc1623;
-            }
-            else if (p.getAppliedRegion().equals("23-5")) {
-               currentAccObj = specAcc235;
-            }
-            else {
-               System.err.println("FUUUCK");
-               System.err.println(p.getAppliedRegion());
-               System.exit(1);
-            }
-            allTest = new KAlphaNearest(p, k, alpha);
-            result = allTest.classifySpecies(allPyroprints, regionFilter);
-            if (result == null) {
-               currentAccObj.addNonDecision();
-            }
-            else{
-               if (s.equals(result)) {
-                  currentAccObj.addSuccess();
-               }
-               else {
-                  currentAccObj.addFailure();
-               }
-            }
-         }
-         speciesAccuracy.add(specAcc1623);
-         speciesAccuracy.add(specAcc235);
-         System.out.printf("%s: %.3f\n",specAcc1623,specAcc1623.getSuccessFailureAccuracy());
-         System.out.printf("%s: %.3f\n",specAcc235,specAcc235.getSuccessFailureAccuracy());
+
+      NearestNeighbors neighborTest = new NearestNeighbors(deerThing, allPyroprints);
+
+      result = neighborTest.classifySpecies(17, .95, regionFilter);
+      LinkedList<NearestNeighbors> calculatedDists = new LinkedList<NearestNeighbors>();
+      Collections.sort(allPyroprints);
+      System.err.println("Calculating distances...");
+      for (Pyroprint p : allPyroprints) {
+         neighborTest = new NearestNeighbors(p, allPyroprints);
+         calculatedDists.add(neighborTest);
       }
-//      for (RegionAccuracy<Species> r : speciesAccuracy) {
-//         System.out.printf("%s: %.3f\n",r,r.getSuccessFailureAccuracy());
-//      }
+      System.err.println("Done.");
+
+      for (NearestNeighbors n : calculatedDists) {
+         System.out.println();
+      }
 
       System.err.println("Well, I got here...");
 
