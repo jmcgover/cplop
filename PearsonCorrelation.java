@@ -5,6 +5,9 @@ public class PearsonCorrelation extends SimilarityMetric<Pyroprint> {
 
    public double similarity(Pyroprint original, Pyroprint other){
       if (!original.isSameAppliedRegion(other)) {
+         System.err.printf("Cannot compare %s (%s) and %s(%s)\n",
+               original,original.getAppliedRegion(),
+               other,other.getAppliedRegion());
          throw new IllegalArgumentException();
       }
       return pearsonCorrelation(original.getPHeights(), other.getPHeights());
