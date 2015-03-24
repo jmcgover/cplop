@@ -24,6 +24,11 @@ public class Isolate extends Host{
       return this.pyroprints;
    }
 
+   //Environmental Determination
+   public boolean isEnvironmental(){
+      return this.isoId.substring(0,2).equals("ES");
+   }
+
    // Keys
    public String hostKey(){
       return super.key();

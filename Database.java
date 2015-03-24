@@ -52,7 +52,7 @@ public class Database {
       if (replacements.containsKey(commonName)) {
          commonName = replacements.get(commonName);
       }
-      return commonName;
+      return commonName.replace(",","");
    }
    public String retrieveHostId(ResultSet result) throws SQLException{
       return result.getString("hostId");

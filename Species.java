@@ -3,11 +3,13 @@ import java.util.*;
 
 public class Species implements Comparable<Species>, Serializable{
    private String commonName;
+   public Equivalence equivalenceClass;
    private HashMap<String, Host> hosts;
 
    // CONSTRUCTORS
    public Species(String commonName){
       this.commonName = commonName;
+      this.equivalenceClass = new Equivalence(commonName);
       this.hosts = new HashMap<String, Host>();
    }
    public Species(Species other){
@@ -22,6 +24,9 @@ public class Species implements Comparable<Species>, Serializable{
    public HashMap<String, Host> getHosts(){
       return this.hosts;
    }
+   public int getPyroprintCount(){
+      return getPyroprints().values().size();
+   }
    public HashMap<String, Pyroprint> getPyroprints(){
       HashMap<String, Pyroprint> pyroprints = new HashMap<String, Pyroprint>();
       for (Host h : hosts.values()) {
@@ -30,6 +35,11 @@ public class Species implements Comparable<Species>, Serializable{
          }
       }
       return pyroprints;
+   }
+
+   //Equivalent Species
+   public void addSameSpecies(String otherName){
+      equivalenceClass.addEquivalence(otherName);
    }
 
    // Key
@@ -63,6 +73,13 @@ public class Species implements Comparable<Species>, Serializable{
       if (this.getClass() != other.getClass()) {
          return false;
       }
-      return this.commonName.equals(((Species)other).commonName);
+//      System.err.print("Is " + this.commonName + " equal to " + (((Species)other).getCommonName()) + "? ");
+//      if (this.equivalenceClass.isEquivalent(((Species)other).getCommonName())){
+//         System.err.println("YES");
+//      }
+//      else {
+//         System.err.println("NO");
+//      }
+      return this.equivalenceClass.isEquivalent(((Species)other).getCommonName());
    }
 }

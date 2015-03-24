@@ -15,10 +15,11 @@ public class PearsonCorrelation extends SimilarityMetric<Pyroprint> {
 
    public String toString(){
       Pyroprint pyroprint = super.getOther();
-      String returnString = String.format("%s %s %s: %.3f",
+      String returnString = String.format("%s %s %s (%s): %.3f",
             pyroprint.getCommonName(),
             pyroprint.getIsoId(),
             pyroprint.getPyroId(),
+            pyroprint.getAppliedRegion(),
             super.getSimilarity());
       return returnString;
    }

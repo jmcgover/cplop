@@ -1,4 +1,6 @@
-public class RegionAccuracy<T> extends IndividualAccuracy<T>{
+import java.io.*;
+
+public class RegionAccuracy<T> extends IndividualAccuracy<T> implements Serializable{
    private String appliedRegion;
    public RegionAccuracy(T category, String appliedRegion){
       super(category);

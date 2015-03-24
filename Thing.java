@@ -1,5 +1,7 @@
+import java.io.*;
+
 public class Thing<T> 
-   implements Countable, Comparable<Thing<T>>{
+   implements Countable, Comparable<Thing<T>>, Serializable{
    private T thing;
    private int count;
    public Thing(T thing){

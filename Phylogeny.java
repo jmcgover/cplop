@@ -26,6 +26,9 @@ public class Phylogeny
    public Map<String,Pyroprint> getAllPyroprints(){
       return this.pyroprints;
    }
+   public Species getSpecies(String key){
+      return this.species.get(key);
+   }
 
    public boolean add(Species species){
       if (!this.species.containsKey(species.key())) {

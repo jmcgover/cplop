@@ -137,7 +137,35 @@ public class TreeBuilder{
          e.printStackTrace();
          printError("LOOP");
       }
+      addEquivalencies();
       return this.tree;
+   }
+   private void addEquivalencies(){
+      System.err.println("Adding equivalencies...");
+      addBidirectionalEquivalence("Human","Hu");
+      addBidirectionalEquivalence("Human","Hu and Cw");
+      addBidirectionalEquivalence("Human","Hu and Dg");
+      addBidirectionalEquivalence("Human","Hu Cw and Dg");
+
+      addBidirectionalEquivalence("Dog","Dg");
+      addBidirectionalEquivalence("Dog","Cw and Dg");
+      addBidirectionalEquivalence("Dog","Hu and Dg");
+      addBidirectionalEquivalence("Dog","Hu Cw and Dg");
+
+      addBidirectionalEquivalence("Cow","Cw");
+      addBidirectionalEquivalence("Cow","Cw and Dg");
+      addBidirectionalEquivalence("Cow","Hu and Cw");
+      addBidirectionalEquivalence("Cow","Hu Cw and Dg");
+
+      addBidirectionalEquivalence("Pig","Pig/Swine");
+      addBidirectionalEquivalence("Pig/Swine","Wild Pig");
+      addBidirectionalEquivalence("Pig","Wild Pig");
+
+      System.err.println("Done.");
+   }
+   public void addBidirectionalEquivalence(String first, String second){
+      tree.getSpecies(first).addSameSpecies(second);
+      tree.getSpecies(second).addSameSpecies(first);
    }
    public Phylogeny get(){
       if (this.tree == null) {

@@ -1,15 +1,14 @@
 import java.io.*;
 import java.util.*;
 
-public class NearestNeighbors{
+public class NearestNeighbors implements Serializable{
+   private static final int FILTER_START = 31;
    private Pyroprint pyroprint;
-   private List<Pyroprint> library;
-   private LinkedList<PearsonCorrelation> neighbors;
+   private ArrayList<PearsonCorrelation> neighbors;
 
-   public NearestNeighbors(Pyroprint pyroprint, List<Pyroprint> library){
+   public NearestNeighbors(Pyroprint pyroprint, Collection<Pyroprint> library, Filter<Pyroprint> filter){
       this.pyroprint = pyroprint;
-      this.library = library;
-      this.neighbors = sortNeighbors();
+      this.neighbors = sortNeighbors(library, filter);
    }
    public Pyroprint getPyroprint(){
       return this.pyroprint;
@@ -17,91 +16,85 @@ public class NearestNeighbors{
    public List<PearsonCorrelation> getNeighbors(){
       return this.neighbors;
    }
-   public List<Pyroprint> getLibrary(){
-      return this.library;
-   }
    public String toString(){
       return this.pyroprint.key();
    }
-   private LinkedList<PearsonCorrelation> sortNeighbors(){
-      LinkedList<PearsonCorrelation> neighbors = new LinkedList<PearsonCorrelation>();
+   private ArrayList<PearsonCorrelation> sortNeighbors(Collection<Pyroprint> library, Filter<Pyroprint> filter){
+      ArrayList<PearsonCorrelation> neighbors = new ArrayList<PearsonCorrelation>();
 
-      // Hardcoding this filter because it's ALWAYS necessary.
-      Filter<Pyroprint> regionFilter = new RegionFilter();
       for (Pyroprint other : library) {
-         if (regionFilter.isComparable(this.pyroprint, other)) {
+         if (filter.isComparable(this.pyroprint, other) || other.equals(this.pyroprint)) {
             neighbors.add(new PearsonCorrelation(this.pyroprint, other));
          }
       }
       Collections.sort(neighbors);
+//      neighbors.subList(FILTER_START, neighbors.size() - 1).clear();
       return neighbors;
    }
-   public Species classifySpecies(int k, double alpha, Filter<Pyroprint> filter){
-      HashMap<Species, Thing<Species>> resultsTable = new HashMap<Species, Thing<Species>>();
+   //Classification
+   public Species classifySpecies(int k, double alpha){
+      HashMap<String, Thing<Species>> resultsTable = new HashMap<String, Thing<Species>>();
       Species result = null;
-      for (PearsonCorrelation p : getTopKAlpha(k,alpha,filter)) {
+      List<PearsonCorrelation> topKAlphaList = getTopKAlpha(k,alpha);
+      for (int i = 1; i < topKAlphaList.size(); i++) {
+         PearsonCorrelation p = topKAlphaList.get(i);
          result = new Species(p.getOther().getCommonName());
-         if (resultsTable.containsKey(result)) {
-            resultsTable.get(result).increment();
+         if (resultsTable.containsKey(result.getCommonName())) {
+            resultsTable.get(result.getCommonName()).increment();
          }
          else {
-            resultsTable.put(result, new Thing<Species>(result));
+            resultsTable.put(result.getCommonName(), new Thing<Species>(result));
          }
       }
-      ArrayList<Thing<Species>> sortedResults = new ArrayList<Thing<Species>>(resultsTable.values());
-      Collections.sort(sortedResults);
-      return sortedResults.get(0).getThing();
+      if (resultsTable.size() > 0) {
+         ArrayList<Thing<Species>> sortedResults = new ArrayList<Thing<Species>>(resultsTable.values());
+         Collections.sort(sortedResults);
+         return sortedResults.get(0).getThing();
+      }
+      return null;
    }
-   public List<PearsonCorrelation> getTopKAlpha(int k, double alpha, Filter<Pyroprint> filter){
+   //Top List
+   public List<PearsonCorrelation> getTopKAlpha(int k, double alpha){
       ArrayList<PearsonCorrelation> topKAlphaList = new ArrayList<PearsonCorrelation>();
-      PearsonCorrelation neighbor = null;
-      int neighborNdx = 0;
       int i = 0;
-      while (i <= k && neighborNdx < neighbors.size()
-            && (neighbor = neighbors.get(neighborNdx)).getSimilarity() >= alpha) {
-         if (filter.isComparable(pyroprint, neighbor.getOther()) 
-               || pyroprint.equals(neighbor.getOther())) {
-            topKAlphaList.add(neighbors.get(neighborNdx));
-            i++;
-         }
-         neighborNdx++;
+      while (i <= k && i < neighbors.size() && neighbors.get(i).getSimilarity() >= alpha) {
+         topKAlphaList.add(neighbors.get(i));
+         i++;
       }
+//      if (alpha == 1.0) {
+//         if (topKAlphaList.size() > 1) {
+//         System.err.println("Some Bullshit: ");
+//         for (PearsonCorrelation p : topKAlphaList) {
+//            System.err.println(p);
+//         }
+//         }
+//      }
 
       return topKAlphaList;
    }
 
-   public void printTopKAlpha(int k, double alpha, 
-         Filter<Pyroprint> filter, PrintStream stream){
-
-      PearsonCorrelation neighbor = null;
-      int neighborNdx = 0;
+   //Printing
+   public void printTopKAlpha(int k, double alpha, PrintStream stream){
+      //Top List
+      //Has identical logic but could be gotten rid of.
       int i = 0;
-
       stream.printf("k: %d alpha: %.3f\n",k,alpha);
-      while (i <= k && neighborNdx < neighbors.size()
-            && (neighbor = neighbors.get(neighborNdx)).getSimilarity() >= alpha) {
-         if (filter.isComparable(pyroprint, neighbor.getOther()) 
-               || pyroprint.equals(neighbor.getOther())) {
-            stream.printf("%2d: %s\n",i,neighbors.get(neighborNdx));
-            i++;
-         }
-         else {
-            stream.printf("%2d: *%s\n",i,neighbors.get(neighborNdx));
-         }
-         neighborNdx++;
-
+      while (i <= k && i < neighbors.size() && neighbors.get(i).getSimilarity() >= alpha) {
+         stream.printf("%2d: %s\n",i,neighbors.get(i++));
       }
       stream.printf("Last Checked Neighbor:\n");
-      stream.printf("%2d: %s\n",neighborNdx,neighbors.get(neighborNdx));
-      HashMap<Species, Thing<Species>> resultsTable = new HashMap<Species, Thing<Species>>();
+      stream.printf("%2d: %s\n",i,neighbors.get(i));
+
+      //Species Classification
+      HashMap<String, Thing<Species>> resultsTable = new HashMap<String, Thing<Species>>();
       Species result = null;
-      for (PearsonCorrelation p : getTopKAlpha(k,alpha,filter)) {
+      for (PearsonCorrelation p : getTopKAlpha(k,alpha)) {
          result = new Species(p.getOther().getCommonName());
-         if (resultsTable.containsKey(result)) {
-            resultsTable.get(result).increment();
+         if (resultsTable.containsKey(result.getCommonName())) {
+            resultsTable.get(result.getCommonName()).increment();
          }
          else {
-            resultsTable.put(result, new Thing<Species>(result));
+            resultsTable.put(result.getCommonName(), new Thing<Species>(result));
          }
       }
       ArrayList<Thing<Species>> sortedResults = new ArrayList<Thing<Species>>(resultsTable.values());
