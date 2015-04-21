@@ -1,4 +1,4 @@
-public class EnvironmentalFilter extends RegionFilter{
+public class EnvironmentalFilter extends FlaggedFilter{
    public EnvironmentalFilter(){
       super();
    }

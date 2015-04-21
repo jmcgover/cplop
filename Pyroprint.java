@@ -5,13 +5,18 @@ public class Pyroprint extends Isolate{
    private static final int DISP_23_5 = 93;
    private String pyroId;
    private String appliedRegion;
+   private boolean isErroneous;
    private int dispensations;
    private double[] pHeights;
 
    // CONSTRUCTORS
-   public Pyroprint(String commonName, String hostId, String isoId, String pyroId, String appliedRegion, double[] pHeights){
+   public Pyroprint(
+            String commonName, String hostId, String isoId, 
+            String pyroId, boolean isErroneous, String appliedRegion, double[] pHeights
+         ){
       super(commonName, hostId, isoId);
       this.pyroId = pyroId;
+      this.isErroneous = isErroneous;
 
       this.appliedRegion = appliedRegion;
       if (appliedRegion.equals("23-5")) {
@@ -30,6 +35,9 @@ public class Pyroprint extends Isolate{
    // GETS
    public String getPyroId(){
       return this.pyroId;
+   }
+   public boolean isErroneous(){
+      return this.isErroneous;
    }
    public String getAppliedRegion(){
       return this.appliedRegion;
@@ -59,7 +67,7 @@ public class Pyroprint extends Isolate{
       return key().hashCode();
    }
    public String toString(){
-      return this.pyroId;
+      return this.pyroId + (this.isErroneous ? "(BAD)" : "");
    }
    public boolean equals(Object other){
       return super.equals(other) && this.pyroId.equals(((Pyroprint)other).pyroId);

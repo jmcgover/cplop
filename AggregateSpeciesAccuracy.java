@@ -13,6 +13,9 @@ public class AggregateSpeciesAccuracy implements Serializable{
          this.accuracies.put(s.getCommonName(), new SpeciesAccuracy(s));
       }
    }
+   public Accuracy getProperAccuracy(Species s, String appliedRegion){
+      return this.accuracies.get(s.getCommonName()).getProperAccuracy(s, appliedRegion);
+   }
    public Accuracy getProperAccuracy(Pyroprint p){
       return this.accuracies.get(p.getCommonName()).getProperAccuracy(p);
    }

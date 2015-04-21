@@ -161,7 +161,6 @@ public class RunTests{
          System.err.println("Successful connection.");
          TreeBuilder builder = new TreeBuilder(database);
 
-         System.err.println("Getting tree from '" + phylogenyFilename + "'...");
          tree = builder.get();
          if(saveTree){
             // Save Tree
@@ -175,29 +174,35 @@ public class RunTests{
       ArrayList<Species> speciesList = new ArrayList<Species>(tree.getAllSpecies().values());
       // Print Species by COUNT
       Collections.sort(speciesList, new SortByPyroprintCount());
+      int goodPyroCount = 0;
+      int badPyroCount = 0;
       int pyroCount = 0;
       int numSpecies = 0;
       int i = 0;
       for (Species s : speciesList) {
-         System.out.printf("%2d,%5d,%s\n",i,s.getPyroprintCount(), s);
-         pyroCount += s.getPyroprintCount();
+         System.out.printf("%2d,%5d,%5d,%5d,%s\n",i,s.getGoodPyroprintCount(),s.getBadPyroprintCount(),s.getAllPyroprintCount(),s);
+         goodPyroCount += s.getGoodPyroprintCount();
+         badPyroCount += s.getBadPyroprintCount();
+         pyroCount += s.getAllPyroprintCount();
          numSpecies++;
          i++;
       }
-      System.out.printf("%s: %d\n","Pyros",pyroCount);
+      System.out.printf("%s: %d\n","Good Pyros",goodPyroCount);
+      System.out.printf("%s: %d\n","Bad  Pyros",badPyroCount);
+      System.out.printf("%s: %d\n","All  Pyros",pyroCount);
       System.out.printf("%s: %d\n\n","Specs",numSpecies);
 
       for (Species s : speciesList) {
-         System.out.printf("%5d\t%s\n",s.getPyroprintCount(), s);
+         System.out.printf("%5d\t%5d\t%5d\t%s\n",s.getGoodPyroprintCount(),s.getBadPyroprintCount(),s.getAllPyroprintCount(), s);
       }
       // Print Species by NAME
       Collections.sort(speciesList);
       for (Species s : speciesList) {
-         System.out.printf("%5d\t%s\n", s.getPyroprintCount(), s);
+         System.out.printf("%5d\t%5d\t%5d\t%s\n",s.getGoodPyroprintCount(),s.getBadPyroprintCount(),s.getAllPyroprintCount(), s);
       }
       i = 0;
       for (Species s : speciesList) {
-         System.out.printf("%2d,%5d,%s\n", i,s.getPyroprintCount(), s);
+         System.out.printf("%2d,%5d,%5d,%5d,%s\n",i,s.getGoodPyroprintCount(),s.getBadPyroprintCount(),s.getAllPyroprintCount(),s);
          i++;
       }
       System.out.println();
@@ -218,8 +223,8 @@ public class RunTests{
       Map<String, Species> speciesInTree = tree.getAllSpecies();
       int numRemoved = 0;
       for (Species s : speciesList) {
-         if (s.getPyroprintCount() <= LOW_END_FILTER) {
-            System.err.println("Removing " + s + ": " + s.getPyroprintCount());
+         if (s.getGoodPyroprintCount() <= LOW_END_FILTER) {
+            System.err.printf("Removing %s: %5d/%5d/%5d\n",s,s.getGoodPyroprintCount(),s.getBadPyroprintCount(),s.getAllPyroprintCount());
             speciesInTree.remove(s.key());
             numRemoved++;
          }
@@ -234,11 +239,15 @@ public class RunTests{
             }
          }
       }
+      goodPyroCount = 0;
+      badPyroCount = 0;
       pyroCount = 0;
       numSpecies = 0;
-      for (Species s : tree.getAllSpecies().values()) {
-         System.out.printf("%5d\t%s\n", s.getPyroprintCount(), s);
-         pyroCount += s.getPyroprintCount();
+      for (Species s : speciesList) {
+         System.out.printf("t%5d\t%5d\t%5d\t%s\n",s.getGoodPyroprintCount(),s.getBadPyroprintCount(),s.getAllPyroprintCount(),s);
+         goodPyroCount += s.getGoodPyroprintCount();
+         badPyroCount += s.getBadPyroprintCount();
+         pyroCount += s.getAllPyroprintCount();
          numSpecies++;
       }
 
@@ -246,25 +255,25 @@ public class RunTests{
       speciesList = new ArrayList<Species>(tree.getAllSpecies().values());
       Collections.sort(speciesList, new SortByPyroprintCount());
       for (Species s : speciesList) {
-         System.out.printf("%2d,%5d,%s\n", i, s.getPyroprintCount(), s);
+         System.out.printf("%2d,%5d,%5d,%5d,%s\n", i, s.getGoodPyroprintCount(), s.getBadPyroprintCount(), s.getAllPyroprintCount(), s);
          i++;
       }
       System.out.printf("%s: %d\n","Pyros",pyroCount);
       System.out.printf("%s: %d\n\n","Specs",numSpecies);
       System.out.printf("%s: %d\n\n","Rem'd",numRemoved);
-      SpeciesExperiment speciesExperiment = new SpeciesExperiment(k, alpha, tree);
+      RecallExperiment speciesExperiment = new RecallExperiment(k, alpha, tree);
       if (loadExperiment) {
          // Load Experiment
          System.err.println("Loading species experiment from '" 
                + experimentFilename + "'...");
-         speciesExperiment = SpeciesExperiment.load(experimentFilename);
+         speciesExperiment = RecallExperiment.load(experimentFilename);
          System.err.println("Done.");
       }
       else {
          System.err.printf("Running experiments for k=%s, alpha=%s...\n",
                Arrays.toString(k),
                Arrays.toString(alpha));
-         speciesExperiment = new SpeciesExperiment(k, alpha, tree);
+         speciesExperiment = new RecallExperiment(k, alpha, tree);
          speciesExperiment.runExperiment();
          System.err.println("Done.");
          // Run Experiment
@@ -287,7 +296,7 @@ public class RunTests{
          e.printStackTrace();
          System.exit(1);
       }
-      ExperimentPrinter printer = new SpeciesExperimentPrinter(speciesExperiment);
+      ExperimentPrinter printer = new RecallExperimentPrinter(speciesExperiment);
       printer.printToCsv();
       printer.printToCsv(stream);
       System.err.println("Well, I got here...");

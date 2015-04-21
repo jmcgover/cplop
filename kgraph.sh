@@ -34,8 +34,9 @@ echo $plotCommand
 gnuplot -persist << EOF
    # OUTPUT
    #set terminal x11
-   set terminal svg size $WIDTH,$HEIGHT
+   #set terminal svg size $WIDTH,$HEIGHT
    #set terminal svg 
+   set terminal png size $WIDTH,$HEIGHT
    set output "$output" 
 
    # SEPARATOR

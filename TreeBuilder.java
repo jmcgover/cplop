@@ -39,17 +39,24 @@ public class TreeBuilder{
       String hostId = "";
       String isoId = "";
       String pyroId = "";
+      boolean isErroneous = false;
       String appliedRegion = "";
       double[] pHeights = null;
       int position = 0;
       double pHeight = 0.0;
 
       tree = new Phylogeny();
-      String allQuery = "select p.appliedRegion,p.pyroId,p.isoID,i.hostId,i.commonName ";
-      allQuery += "from Pyroprints p, Histograms h, Isolates i ";
-      allQuery += "where h.pyroID = p.pyroID and i.isoId = p.isoId ";
-      allQuery += "group by pyroid ";
-      allQuery += "order by commonName, hostId, isoId, pyroId, appliedRegion;";
+      String allQuery = "SELECT ";
+      allQuery += "p.appliedRegion, ";
+      allQuery += "p.pyroId, ";
+      allQuery += "p.isoID, ";
+      allQuery += "p.isErroneous, ";
+      allQuery += "i.hostId, ";
+      allQuery += "i.commonName ";
+      allQuery += "FROM Pyroprints p, Histograms h, Isolates i ";
+      allQuery += "WHERE h.pyroID = p.pyroID and i.isoId = p.isoId ";
+      allQuery += "GROUP BY pyroid ";
+      allQuery += "ORDER BY commonName, hostId, isoId, pyroId, appliedRegion, isErroneous;";
 
       ResultSet allResults = null;
 
@@ -82,6 +89,7 @@ public class TreeBuilder{
             hostId = database.retrieveHostId(allResults);
             isoId = database.retrieveIsoId(allResults);
             pyroId = database.retrievePyroId(allResults);
+            isErroneous = database.retrieveIsErroneous(allResults);
             appliedRegion = database.retrieveAppliedRegion(allResults);
             pHeights = new double[database.retrieveDispensations(allResults) + 1];
             }
@@ -91,6 +99,7 @@ public class TreeBuilder{
                System.err.printf("hostId: '%s'\n", hostId);
                System.err.printf("isoId: '%s'\n", isoId);
                System.err.printf("pyroId: '%s'\n", pyroId);
+               System.err.printf("isErroneous: '%s'\n", isErroneous);
                System.err.printf("appliedRegion: '%s'\n", appliedRegion);
                printError("Attempting to get the above values.");
             }
@@ -119,13 +128,14 @@ public class TreeBuilder{
                System.err.printf("hostId: '%s'\n", hostId);
                System.err.printf("isoId: '%s'\n", isoId);
                System.err.printf("pyroId: '%s'\n", pyroId);
+               System.err.printf("isErroneous: '%s'\n", isErroneous);
                System.err.printf("appliedRegion: '%s'\n", appliedRegion);
                printError("pHeight loop");
             }
             spec = new Species(commonName);
             host = new Host(commonName, hostId);
             isol = new Isolate(commonName, hostId, isoId);
-            pyro = new Pyroprint(commonName, hostId, isoId, pyroId, appliedRegion, pHeights);
+            pyro = new Pyroprint(commonName, hostId, isoId, pyroId, isErroneous, appliedRegion, pHeights);
             tree.add(spec);
             tree.add(host);
             tree.add(isol);

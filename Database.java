@@ -64,6 +64,10 @@ public class Database {
    public String retrievePyroId(ResultSet result) throws SQLException{
       return result.getString("pyroId");
    }
+   public boolean retrieveIsErroneous(ResultSet result) throws SQLException{
+      boolean flag = result.getInt("isErroneous") == 1;
+      return flag;
+   }
    public String retrieveAppliedRegion(ResultSet result) throws SQLException{
       return result.getString("appliedRegion");
    }

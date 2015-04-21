@@ -19,9 +19,9 @@ echo $alpha
 
 gnuplot -persist << EOF
    # OUTPUT
-   set terminal x11
-   #set terminal svg size $WIDTH,$HEIGHT
-   #set output "$output" 
+   #set terminal x11
+   set terminal svg size $WIDTH,$HEIGHT
+   set output "$output" 
 
 
    # SEPARATOR

@@ -9,6 +9,15 @@ public class SpeciesAccuracy implements Serializable{
       this.acc1623 = new RegionAccuracy<Species>(this.species, "16-23");
       this.acc235 = new RegionAccuracy<Species>(this.species, "23-5");
    }
+   public Accuracy getProperAccuracy(Species s, String appliedRegion){
+      if (appliedRegion.equals("16-23")) {
+         return this.acc1623;
+      }
+      else if (appliedRegion.equals("23-5")) {
+         return this.acc235;
+      }
+      throw new IllegalStateException("WTF applied region is this? " + appliedRegion);
+   }
    public Accuracy getProperAccuracy(Pyroprint p){
       if (p.getAppliedRegion().equals("16-23")) {
          return this.acc1623;

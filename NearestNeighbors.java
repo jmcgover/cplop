@@ -61,6 +61,7 @@ public class NearestNeighbors implements Serializable{
          topKAlphaList.add(neighbors.get(i));
          i++;
       }
+
 //      if (alpha == 1.0) {
 //         if (topKAlphaList.size() > 1) {
 //         System.err.println("Some Bullshit: ");

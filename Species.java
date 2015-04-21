@@ -24,7 +24,27 @@ public class Species implements Comparable<Species>, Serializable{
    public HashMap<String, Host> getHosts(){
       return this.hosts;
    }
-   public int getPyroprintCount(){
+   public int getGoodPyroprintCount(){
+      int count = 0;
+      for (Pyroprint p : getPyroprints().values()) {
+         if (p.isErroneous() == false) {
+            count++;
+         }
+      }
+      return count;
+   }
+
+   public int getBadPyroprintCount(){
+      int count = 0;
+      for (Pyroprint p : getPyroprints().values()) {
+         if (p.isErroneous()) {
+            count++;
+         }
+      }
+      return count;
+   }
+
+   public int getAllPyroprintCount(){
       return getPyroprints().values().size();
    }
    public HashMap<String, Pyroprint> getPyroprints(){
