@@ -261,6 +261,8 @@ public class RunTests{
       System.out.printf("%s: %d\n","Pyros",pyroCount);
       System.out.printf("%s: %d\n\n","Specs",numSpecies);
       System.out.printf("%s: %d\n\n","Rem'd",numRemoved);
+
+      // RUN EXPERIMENT
       RecallExperiment speciesExperiment = new RecallExperiment(k, alpha, tree);
       if (loadExperiment) {
          // Load Experiment
