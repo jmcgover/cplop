@@ -12,9 +12,11 @@ xLabel="$( awk -F "\"*,\"*" "{print \$${xCol}; exit}" ${file})"
 yLabel="$( awk -F "\"*,\"*" "{print \$${yCol}; exit}" ${file})"
 firstLine=$(head -1 "$file")
 alpha=$4
-species=$7
+description=$7
+species=$8
 
-output="${file%.*}${species}${alpha}.svg"
+#output="${file%.*}${description}${species}${alpha}.svg"
+output="${file%.*}${description}${species}${alpha}.png"
 echo saving $file histogram as $output
 echo $output
 echo $xLabel
@@ -44,7 +46,7 @@ gnuplot -persist << EOF
 
    # TITLES
 
-   set title "${species} Accuracy as \$k\$ Increases with \$\\\alpha\$ Threshold ${alpha}"
+   set title "${species} ${description} as \$k\$ Increases with \$\\\alpha\$ Threshold ${alpha}"
    set xlabel "$xLabel"
    set ylabel "$yLabel"
 
