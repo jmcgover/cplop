@@ -15,7 +15,7 @@ public class CommasExperimentPrinter implements ExperimentPrinter{
    }
    private void printAccuracy(PrintStream stream, 
          int k, double alpha, Species s, String region, Accuracy acc){
-      stream.printf("%d,%.3f,%s,%s,%d,%d,%d,%d,%.3f,%.3f\n",
+      stream.printf("%d,%.3f,%s,%s,%d,%d,%d,%d,%.3f,%.3f,\n",
             k,
             alpha,
             s.getCommonName(),region,
@@ -61,9 +61,10 @@ public class CommasExperimentPrinter implements ExperimentPrinter{
       header += ",";
       header += "Total";
       header += ",";
-      header += "Decision Accuracy(\\%)";
+      header += "Decision-Made Relevance(\\%)";
       header += ",";
-      header += "Overall Accuracy(\\%)";
+      header += "Overall Relevance(\\%)";
+      header += ",";
       return header;
    }
 
