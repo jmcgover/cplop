@@ -88,17 +88,15 @@ public class RunExperiment{
       int k[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,17};
       double alpha[] = {0.0, .5, .9, .95, .96, .97, .98, .99, 1.0};
 
-      Experiment experiment = null;
+      Experiment<AggregateSpeciesAccuracy> experiment = null;
       ExperimentPrinter printer = null;
       String resultFilename = "res" + date.toString().replace(" ","_") + ".csv";
       if (precisionFlag) {
          experiment = new PrecisionExperiment(k, alpha, tree);
-         printer = new PrecisionExperimentPrinter((PrecisionExperiment)experiment);
          resultFilename = "precision_" + resultFilename;
       }
       else if (recallFlag) {
          experiment = new RecallExperiment(k, alpha, tree);
-         printer = new RecallExperimentPrinter((RecallExperiment)experiment);
          resultFilename = "recall_" + resultFilename;
       }
       else { 
@@ -120,6 +118,7 @@ public class RunExperiment{
          e.printStackTrace();
          System.exit(1);
       }
+      printer = new CommasExperimentPrinter(experiment);
       printer.printToCsv();
       printer.printToCsv(stream);
       System.err.println("Well, I got here...");

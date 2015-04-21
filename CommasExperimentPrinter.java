@@ -1,11 +1,11 @@
 import java.io.*;
 import java.util.*;
 
-public class PrecisionExperimentPrinter implements ExperimentPrinter{
+public class CommasExperimentPrinter implements ExperimentPrinter{
    private int[] k;
    private double[] alpha;
    private AggregateSpeciesAccuracy[][] testAccuracies;
-   public PrecisionExperimentPrinter(Experiment<AggregateSpeciesAccuracy> experiment){
+   public CommasExperimentPrinter(Experiment<AggregateSpeciesAccuracy> experiment){
       this.k = experiment.getKValues();
       this.alpha = experiment.getAlphaValues();
       this.testAccuracies = experiment.getTestAccuracies();

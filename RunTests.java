@@ -296,7 +296,7 @@ public class RunTests{
          e.printStackTrace();
          System.exit(1);
       }
-      ExperimentPrinter printer = new RecallExperimentPrinter(speciesExperiment);
+      ExperimentPrinter printer = new CommasExperimentPrinter(speciesExperiment);
       printer.printToCsv();
       printer.printToCsv(stream);
       System.err.println("Well, I got here...");
