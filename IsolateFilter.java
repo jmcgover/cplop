@@ -3,6 +3,6 @@ public class IsolateFilter extends EnvironmentalFilter{
       super();
    }
    public boolean isComparable(Pyroprint a, Pyroprint b){
-      return super.isComparable(a,b) && !a.getIsoId().equals(b.getIsoId());
+      return super.isComparable(a,b) && !(a.getIsoId().equals(b.getIsoId()));
    }
 }
