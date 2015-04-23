@@ -61,9 +61,9 @@ public class CommasExperimentPrinter implements ExperimentPrinter{
       header += ",";
       header += "Total";
       header += ",";
-      header += "Decision-Made Relevance";
+      header += "Decision-Made Accuracy";
       header += ",";
-      header += "Overall Relevance";
+      header += "Overall Accuracy";
       header += ",";
       return header;
    }
