@@ -10,6 +10,8 @@ public class RecallExperiment
    private Collection<Pyroprint> library;
    AggregateSpeciesAccuracy[][] testAccuracies;
 
+   private String debugSpecies = null;
+
    public RecallExperiment(int k, double alpha, Phylogeny tree){
       this.k = new int[1];
       this.k[0] = k;
@@ -45,6 +47,25 @@ public class RecallExperiment
       }
       Collections.sort(this.species);
    }
+   public RecallExperiment(int k[], double alpha[], Phylogeny tree, String debugSpecies){
+      this.k = k;
+      this.alpha = alpha;
+
+      this.tree = tree;
+      this.species = new LinkedList<Species>(this.tree.getAllSpecies().values());
+      Collections.sort(this.species);
+      this.library  = new LinkedList<Pyroprint>(this.tree.getAllPyroprints().values());
+      this.testAccuracies = new AggregateSpeciesAccuracy[this.k.length][this.alpha.length];
+      for (int i = 0; i < this.k.length; i++) {
+         for (int a = 0; a < this.alpha.length; a++) {
+            testAccuracies[i][a] = new AggregateSpeciesAccuracy(
+                  this.k[i],this.alpha[a], species);
+         }
+      }
+      Collections.sort(this.species);
+      System.err.println("Printing " + debugSpecies);
+      this.debugSpecies = debugSpecies;
+   }
    public int[] getKValues(){
       return k;
    }
@@ -72,6 +93,9 @@ public class RecallExperiment
                      // Run Test
                      result = null;
                      result = nearestNeighbors.classifySpecies(k[i],alpha[a]);
+                     if (p.getCommonName().equals(debugSpecies)) {
+                        nearestNeighbors.printTopKAlpha(k[i], alpha[a], System.err);
+                     }
                      if (result == null) {
                         currAcc.addNonDecision();
                      } // IF result Null

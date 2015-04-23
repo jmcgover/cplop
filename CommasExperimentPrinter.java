@@ -23,8 +23,8 @@ public class CommasExperimentPrinter implements ExperimentPrinter{
             acc.getFailures(),
             acc.getNonDecisions(),
             acc.getTotal(),
-            acc.getSuccessFailureAccuracy() * 100,
-            acc.getTotalAccuracy() * 100);
+            acc.getSuccessFailureAccuracy(),
+            acc.getTotalAccuracy());
    }
    public void printToCsv(PrintStream stream){
       stream.println(this.getCsvHeader());
@@ -61,9 +61,9 @@ public class CommasExperimentPrinter implements ExperimentPrinter{
       header += ",";
       header += "Total";
       header += ",";
-      header += "Decision-Made Relevance(\\%)";
+      header += "Decision-Made Relevance";
       header += ",";
-      header += "Overall Relevance(\\%)";
+      header += "Overall Relevance";
       header += ",";
       return header;
    }

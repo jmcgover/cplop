@@ -33,6 +33,7 @@ public class RunExperiment{
 
       String treeFilename = null;
       String outputFilename = null;
+      String debugSpecies = null;
       boolean recallFlag = false;
       boolean precisionFlag = false;
       Phylogeny tree = null;
@@ -53,6 +54,9 @@ public class RunExperiment{
                   }
                   recallFlag = true;
                   System.err.printf("Will be performing RECALL.\n");
+                  if (i + 1 < args.length && !args[i + 1].startsWith("-")) {
+                     debugSpecies = args[++i];
+                  }
                }
                // Precision
                if (args[i].equals("-p") || args[i].equals("--precision")) {
@@ -96,7 +100,14 @@ public class RunExperiment{
          resultFilename = "precision_" + resultFilename;
       }
       else if (recallFlag) {
-         experiment = new RecallExperiment(k, alpha, tree);
+         if (debugSpecies == null) {
+            System.out.println("NORMAL");
+            experiment = new RecallExperiment(k, alpha, tree);
+         }
+         else {
+            System.out.println("DEBUG MODE");
+            experiment = new RecallExperiment(k, alpha, tree, debugSpecies);
+         }
          resultFilename = "recall_" + resultFilename;
       }
       else { 
