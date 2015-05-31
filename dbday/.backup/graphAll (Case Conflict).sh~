@@ -1,0 +1,24 @@
+#!/bin/bash
+data=$1
+w=$2
+h=$3
+species=$4
+
+for a in 0.00 0.50 0.90 0.95 0.96 0.97 0.98 0.99 1.00; do 
+   ./kgraph.sh $data 1 10 $a $w $h Precision $species
+done
+
+for a in 0.00 0.50 0.90 0.95 0.96 0.97 0.98 0.99 1.00; do 
+   ./kgraph.sh $data 1 20 $a $w $h Recall $species; 
+done
+
+for a in 0.00 0.50 0.90 0.95 0.96 0.97 0.98 0.99 1.00; do 
+   ./pvr.sh $data 10 20 $a $w $h  $species
+done
+
+for a in 0.00 0.50 0.90 0.95 0.96 0.97 0.98 0.99 1.00; do 
+   ./pvr.sh $data $a $w $h  $species
+done
+
+mkdir -pv images
+mv -v *.png images

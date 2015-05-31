@@ -1,0 +1,174 @@
+%% Creator: Inkscape 0.48.5, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'numhist.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{880bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.45454545)%
+    \put(0,0){\includegraphics[width=\unitlength]{numhist.pdf}}%
+    \put(0.06536364,0.19790909){\makebox(0,0)[rb]{\smash{0}}}%
+    \put(0.06536364,0.21827273){\makebox(0,0)[rb]{\smash{500}}}%
+    \put(0.06536364,0.23854545){\makebox(0,0)[rb]{\smash{1000}}}%
+    \put(0.06536364,0.25890909){\makebox(0,0)[rb]{\smash{1500}}}%
+    \put(0.06536364,0.27927273){\makebox(0,0)[rb]{\smash{2000}}}%
+    \put(0.06536364,0.29963636){\makebox(0,0)[rb]{\smash{2500}}}%
+    \put(0.06536364,0.31990909){\makebox(0,0)[rb]{\smash{3000}}}%
+    \put(0.06536364,0.34027273){\makebox(0,0)[rb]{\smash{3500}}}%
+    \put(0.06536364,0.36063636){\makebox(0,0)[rb]{\smash{4000}}}%
+    \put(0.06536364,0.38090909){\makebox(0,0)[rb]{\smash{4500}}}%
+    \put(0.06536364,0.40127273){\makebox(0,0)[rb]{\smash{5000}}}%
+    \put(0.08554545,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Human}}}}%
+    \put(0.10263636,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Cow}}}}%
+    \put(0.11963636,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{SLO Creek Water}}}}%
+    \put(0.13672727,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Pennington Creek Water}}}}%
+    \put(0.15381818,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Pigeon}}}}%
+    \put(0.17081818,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Ground Squirrel}}}}%
+    \put(0.18790909,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Dog}}}}%
+    \put(0.205,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Human UTI}}}}%
+    \put(0.222,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Sheep}}}}%
+    \put(0.23909091,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Cat}}}}%
+    \put(0.25618182,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Horse}}}}%
+    \put(0.27327273,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Pacific Ocean Water}}}}%
+    \put(0.29027273,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Seagull}}}}%
+    \put(0.30736364,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Wild Turkey}}}}%
+    \put(0.32445455,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Chicken}}}}%
+    \put(0.34145455,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Bat}}}}%
+    \put(0.35854545,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Pig}}}}%
+    \put(0.37563636,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Hu and Dg}}}}%
+    \put(0.39263636,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Hu}}}}%
+    \put(0.40972727,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Cw}}}}%
+    \put(0.42681818,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Cw and Dg}}}}%
+    \put(0.44390909,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Dg}}}}%
+    \put(0.46090909,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Hu Cw and Dg}}}}%
+    \put(0.478,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Hu and Cw}}}}%
+    \put(0.49509091,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Cliff Sparrow}}}}%
+    \put(0.51209091,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Pig/Swine}}}}%
+    \put(0.52918182,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Deer}}}}%
+    \put(0.54627273,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{White Crowned Sparrow}}}}%
+    \put(0.56327273,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Wild Pig}}}}%
+    \put(0.58036364,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{unknown}}}}%
+    \put(0.59745455,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Opossum}}}}%
+    \put(0.61445455,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Great Horned Owl}}}}%
+    \put(0.63154545,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Ocean Water}}}}%
+    \put(0.64863636,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Common Loon}}}}%
+    \put(0.66572727,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Red Tailed Hawk}}}}%
+    \put(0.68272727,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Sea Lion}}}}%
+    \put(0.69981818,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Racoon}}}}%
+    \put(0.71690909,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Turkey Vulture}}}}%
+    \put(0.73390909,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Red-Winged Blackbird}}}}%
+    \put(0.751,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Eared Grebe}}}}%
+    \put(0.76809091,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Freshwater Lagoon}}}}%
+    \put(0.78509091,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Deer Mouse}}}}%
+    \put(0.80218182,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Western Kingbird}}}}%
+    \put(0.81927273,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Unknown Avian}}}}%
+    \put(0.83636364,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Red Wind Blackbird}}}}%
+    \put(0.85336364,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Tree Swallow}}}}%
+    \put(0.87045455,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{orangutan}}}}%
+    \put(0.88754545,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{cougar}}}}%
+    \put(0.90454545,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Klebsiella}}}}%
+    \put(0.92163636,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Surf Scoter}}}}%
+    \put(0.93872727,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Clark Grebe}}}}%
+    \put(0.95572727,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Guinni}}}}%
+    \put(0.97281818,0.19445455){\rotatebox{90}{\makebox(0,0)[rb]{\smash{Barn Owl}}}}%
+    \put(0.016,0.30363636){\rotatebox{90}{\makebox(0,0)[b]{\smash{Number of Pyroprints}}}}%
+    \put(0.52509091,0.00736364){\makebox(0,0)[b]{\smash{Species}}}%
+    \put(0.52509091,0.42581818){\makebox(0,0)[b]{\smash{Number of Pyroprints for each Species in CPLOP}}}%
+    \put(0.08554545,0.39563636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{4559}}}}%
+    \put(0.10263636,0.364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{3781}}}}%
+    \put(0.11963636,0.307){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2381}}}}%
+    \put(0.13672727,0.24545455){\rotatebox{90}{\makebox(0,0)[lb]{\smash{868}}}}%
+    \put(0.15381818,0.23618182){\rotatebox{90}{\makebox(0,0)[lb]{\smash{639}}}}%
+    \put(0.17081818,0.22645455){\rotatebox{90}{\makebox(0,0)[lb]{\smash{401}}}}%
+    \put(0.18790909,0.22463636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{355}}}}%
+    \put(0.205,0.22154545){\rotatebox{90}{\makebox(0,0)[lb]{\smash{280}}}}%
+    \put(0.222,0.219){\rotatebox{90}{\makebox(0,0)[lb]{\smash{216}}}}%
+    \put(0.23909091,0.21563636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{135}}}}%
+    \put(0.25618182,0.21563636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{133}}}}%
+    \put(0.27327273,0.21409091){\rotatebox{90}{\makebox(0,0)[lb]{\smash{97}}}}%
+    \put(0.29027273,0.21390909){\rotatebox{90}{\makebox(0,0)[lb]{\smash{92}}}}%
+    \put(0.30736364,0.21363636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{85}}}}%
+    \put(0.32445455,0.21354545){\rotatebox{90}{\makebox(0,0)[lb]{\smash{82}}}}%
+    \put(0.34145455,0.21327273){\rotatebox{90}{\makebox(0,0)[lb]{\smash{75}}}}%
+    \put(0.35854545,0.21309091){\rotatebox{90}{\makebox(0,0)[lb]{\smash{71}}}}%
+    \put(0.37563636,0.21290909){\rotatebox{90}{\makebox(0,0)[lb]{\smash{66}}}}%
+    \put(0.39263636,0.21272727){\rotatebox{90}{\makebox(0,0)[lb]{\smash{62}}}}%
+    \put(0.40972727,0.21263636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{61}}}}%
+    \put(0.42681818,0.21263636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{60}}}}%
+    \put(0.44390909,0.21263636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{60}}}}%
+    \put(0.46090909,0.21263636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{60}}}}%
+    \put(0.478,0.21263636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{60}}}}%
+    \put(0.49509091,0.21254545){\rotatebox{90}{\makebox(0,0)[lb]{\smash{57}}}}%
+    \put(0.51209091,0.21227273){\rotatebox{90}{\makebox(0,0)[lb]{\smash{52}}}}%
+    \put(0.52918182,0.212){\rotatebox{90}{\makebox(0,0)[lb]{\smash{44}}}}%
+    \put(0.54627273,0.21136364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{30}}}}%
+    \put(0.56327273,0.21136364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{29}}}}%
+    \put(0.58036364,0.21109091){\rotatebox{90}{\makebox(0,0)[lb]{\smash{22}}}}%
+    \put(0.59745455,0.21063636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{12}}}}%
+    \put(0.61445455,0.21063636){\rotatebox{90}{\makebox(0,0)[lb]{\smash{11}}}}%
+    \put(0.63154545,0.21054545){\rotatebox{90}{\makebox(0,0)[lb]{\smash{10}}}}%
+    \put(0.64863636,0.21045455){\rotatebox{90}{\makebox(0,0)[lb]{\smash{6}}}}%
+    \put(0.66572727,0.21045455){\rotatebox{90}{\makebox(0,0)[lb]{\smash{6}}}}%
+    \put(0.68272727,0.21045455){\rotatebox{90}{\makebox(0,0)[lb]{\smash{6}}}}%
+    \put(0.69981818,0.21045455){\rotatebox{90}{\makebox(0,0)[lb]{\smash{6}}}}%
+    \put(0.71690909,0.21045455){\rotatebox{90}{\makebox(0,0)[lb]{\smash{6}}}}%
+    \put(0.73390909,0.21036364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{5}}}}%
+    \put(0.751,0.21036364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{4}}}}%
+    \put(0.76809091,0.21036364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{4}}}}%
+    \put(0.78509091,0.21036364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{4}}}}%
+    \put(0.80218182,0.21036364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{4}}}}%
+    \put(0.81927273,0.21036364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{4}}}}%
+    \put(0.83636364,0.21036364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{4}}}}%
+    \put(0.85336364,0.21036364){\rotatebox{90}{\makebox(0,0)[lb]{\smash{4}}}}%
+    \put(0.87045455,0.21027273){\rotatebox{90}{\makebox(0,0)[lb]{\smash{3}}}}%
+    \put(0.88754545,0.21027273){\rotatebox{90}{\makebox(0,0)[lb]{\smash{3}}}}%
+    \put(0.90454545,0.21027273){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
+    \put(0.92163636,0.21027273){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
+    \put(0.93872727,0.21027273){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
+    \put(0.95572727,0.21027273){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
+    \put(0.97281818,0.21027273){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
+  \end{picture}%
+\endgroup%

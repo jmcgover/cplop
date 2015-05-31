@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-8"  standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg 
+ width="1000" height="400" 
+ viewBox="0 0 1000 400"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+
+<title>Gnuplot</title>
+<desc>Produced by GNUPLOT 4.6 patchlevel 3 </desc>
+
+<g id="gnuplot_canvas">
+
+<rect x="0" y="0" width="1000" height="400" fill="none"/>
+<defs>
+
+	<circle id='gpDot' r='0.5' stroke-width='0.5'/>
+	<path id='gpPt0' stroke-width='0.222' stroke='currentColor' d='M-1,0 h2 M0,-1 v2'/>
+	<path id='gpPt1' stroke-width='0.222' stroke='currentColor' d='M-1,-1 L1,1 M1,-1 L-1,1'/>
+	<path id='gpPt2' stroke-width='0.222' stroke='currentColor' d='M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1'/>
+	<rect id='gpPt3' stroke-width='0.222' stroke='currentColor' x='-1' y='-1' width='2' height='2'/>
+	<rect id='gpPt4' stroke-width='0.222' stroke='currentColor' fill='currentColor' x='-1' y='-1' width='2' height='2'/>
+	<circle id='gpPt5' stroke-width='0.222' stroke='currentColor' cx='0' cy='0' r='1'/>
+	<use xlink:href='#gpPt5' id='gpPt6' fill='currentColor' stroke='none'/>
+	<path id='gpPt7' stroke-width='0.222' stroke='currentColor' d='M0,-1.33 L-1.33,0.67 L1.33,0.67 z'/>
+	<use xlink:href='#gpPt7' id='gpPt8' fill='currentColor' stroke='none'/>
+	<use xlink:href='#gpPt7' id='gpPt9' stroke='currentColor' transform='rotate(180)'/>
+	<use xlink:href='#gpPt9' id='gpPt10' fill='currentColor' stroke='none'/>
+	<use xlink:href='#gpPt3' id='gpPt11' stroke='currentColor' transform='rotate(45)'/>
+	<use xlink:href='#gpPt11' id='gpPt12' fill='currentColor' stroke='none'/>
+</defs>
+<g style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
+	<path stroke='black'  d='M80.2,177.8 M975.0,177.8  h0.01'/>	<g transform="translate(71.9,182.3)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 0</text>
+	</g>
+	<path stroke='black'  d='M80.2,165.4 M975.0,165.4  h0.01'/>	<g transform="translate(71.9,169.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 500</text>
+	</g>
+	<path stroke='black'  d='M80.2,153.1 M975.0,153.1  h0.01'/>	<g transform="translate(71.9,157.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 1000</text>
+	</g>
+	<path stroke='black'  d='M80.2,140.7 M975.0,140.7  h0.01'/>	<g transform="translate(71.9,145.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 1500</text>
+	</g>
+	<path stroke='black'  d='M80.2,128.3 M975.0,128.3  h0.01'/>	<g transform="translate(71.9,132.8)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 2000</text>
+	</g>
+	<path stroke='black'  d='M80.2,115.9 M975.0,115.9  h0.01'/>	<g transform="translate(71.9,120.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 2500</text>
+	</g>
+	<path stroke='black'  d='M80.2,103.6 M975.0,103.6  h0.01'/>	<g transform="translate(71.9,108.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 3000</text>
+	</g>
+	<path stroke='black'  d='M80.2,91.2 M975.0,91.2  h0.01'/>	<g transform="translate(71.9,95.7)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 3500</text>
+	</g>
+	<path stroke='black'  d='M80.2,78.8 M975.0,78.8  h0.01'/>	<g transform="translate(71.9,83.3)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 4000</text>
+	</g>
+	<path stroke='black'  d='M80.2,66.5 M975.0,66.5  h0.01'/>	<g transform="translate(71.9,71.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 4500</text>
+	</g>
+	<path stroke='black'  d='M80.2,54.1 M975.0,54.1  h0.01'/>	<g transform="translate(71.9,58.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 5000</text>
+	</g>
+	<path stroke='black'  d='M88.6,177.8 M88.6,54.1  h0.01'/>	<g transform="translate(93.1,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Human</text>
+	</g>
+	<path stroke='black'  d='M105.5,177.8 M105.5,54.1  h0.01'/>	<g transform="translate(110.0,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Cow</text>
+	</g>
+	<path stroke='black'  d='M122.4,177.8 M122.4,54.1  h0.01'/>	<g transform="translate(126.9,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>SLO Creek Water</text>
+	</g>
+	<path stroke='black'  d='M139.3,177.8 M139.3,54.1  h0.01'/>	<g transform="translate(143.8,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Pennington Creek Water</text>
+	</g>
+	<path stroke='black'  d='M156.2,177.8 M156.2,54.1  h0.01'/>	<g transform="translate(160.7,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Pigeon</text>
+	</g>
+	<path stroke='black'  d='M173.1,177.8 M173.1,54.1  h0.01'/>	<g transform="translate(177.6,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Ground Squirrel</text>
+	</g>
+	<path stroke='black'  d='M189.9,177.8 M189.9,54.1  h0.01'/>	<g transform="translate(194.4,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Dog</text>
+	</g>
+	<path stroke='black'  d='M206.8,177.8 M206.8,54.1  h0.01'/>	<g transform="translate(211.3,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Human UTI</text>
+	</g>
+	<path stroke='black'  d='M223.7,177.8 M223.7,54.1  h0.01'/>	<g transform="translate(228.2,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Sheep</text>
+	</g>
+	<path stroke='black'  d='M240.6,177.8 M240.6,54.1  h0.01'/>	<g transform="translate(245.1,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Cat</text>
+	</g>
+	<path stroke='black'  d='M257.5,177.8 M257.5,54.1  h0.01'/>	<g transform="translate(262.0,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Horse</text>
+	</g>
+	<path stroke='black'  d='M274.4,177.8 M274.4,54.1  h0.01'/>	<g transform="translate(278.9,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Pacific Ocean Water</text>
+	</g>
+	<path stroke='black'  d='M291.2,177.8 M291.2,54.1  h0.01'/>	<g transform="translate(295.7,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Seagull</text>
+	</g>
+	<path stroke='black'  d='M308.1,177.8 M308.1,54.1  h0.01'/>	<g transform="translate(312.6,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Wild Turkey</text>
+	</g>
+	<path stroke='black'  d='M325.0,177.8 M325.0,54.1  h0.01'/>	<g transform="translate(329.5,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Chicken</text>
+	</g>
+	<path stroke='black'  d='M341.9,177.8 M341.9,54.1  h0.01'/>	<g transform="translate(346.4,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Bat</text>
+	</g>
+	<path stroke='black'  d='M358.8,177.8 M358.8,54.1  h0.01'/>	<g transform="translate(363.3,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Pig</text>
+	</g>
+	<path stroke='black'  d='M375.7,177.8 M375.7,54.1  h0.01'/>	<g transform="translate(380.2,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Hu and Dg</text>
+	</g>
+	<path stroke='black'  d='M392.5,177.8 M392.5,54.1  h0.01'/>	<g transform="translate(397.0,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Hu</text>
+	</g>
+	<path stroke='black'  d='M409.4,177.8 M409.4,54.1  h0.01'/>	<g transform="translate(413.9,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Cw</text>
+	</g>
+	<path stroke='black'  d='M426.3,177.8 M426.3,54.1  h0.01'/>	<g transform="translate(430.8,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Cw and Dg</text>
+	</g>
+	<path stroke='black'  d='M443.2,177.8 M443.2,54.1  h0.01'/>	<g transform="translate(447.7,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Dg</text>
+	</g>
+	<path stroke='black'  d='M460.1,177.8 M460.1,54.1  h0.01'/>	<g transform="translate(464.6,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Hu Cw and Dg</text>
+	</g>
+	<path stroke='black'  d='M477.0,177.8 M477.0,54.1  h0.01'/>	<g transform="translate(481.5,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Hu and Cw</text>
+	</g>
+	<path stroke='black'  d='M493.8,177.8 M493.8,54.1  h0.01'/>	<g transform="translate(498.3,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Cliff Sparrow</text>
+	</g>
+	<path stroke='black'  d='M510.7,177.8 M510.7,54.1  h0.01'/>	<g transform="translate(515.2,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Pig/Swine</text>
+	</g>
+	<path stroke='black'  d='M527.6,177.8 M527.6,54.1  h0.01'/>	<g transform="translate(532.1,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Deer</text>
+	</g>
+	<path stroke='black'  d='M544.5,177.8 M544.5,54.1  h0.01'/>	<g transform="translate(549.0,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>White Crowned Sparrow</text>
+	</g>
+	<path stroke='black'  d='M561.4,177.8 M561.4,54.1  h0.01'/>	<g transform="translate(565.9,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Wild Pig</text>
+	</g>
+	<path stroke='black'  d='M578.2,177.8 M578.2,54.1  h0.01'/>	<g transform="translate(582.7,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>unknown</text>
+	</g>
+	<path stroke='black'  d='M595.1,177.8 M595.1,54.1  h0.01'/>	<g transform="translate(599.6,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Opossum</text>
+	</g>
+	<path stroke='black'  d='M612.0,177.8 M612.0,54.1  h0.01'/>	<g transform="translate(616.5,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Great Horned Owl</text>
+	</g>
+	<path stroke='black'  d='M628.9,177.8 M628.9,54.1  h0.01'/>	<g transform="translate(633.4,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Ocean Water</text>
+	</g>
+	<path stroke='black'  d='M645.8,177.8 M645.8,54.1  h0.01'/>	<g transform="translate(650.3,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Common Loon</text>
+	</g>
+	<path stroke='black'  d='M662.7,177.8 M662.7,54.1  h0.01'/>	<g transform="translate(667.2,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Red Tailed Hawk</text>
+	</g>
+	<path stroke='black'  d='M679.5,177.8 M679.5,54.1  h0.01'/>	<g transform="translate(684.0,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Sea Lion</text>
+	</g>
+	<path stroke='black'  d='M696.4,177.8 M696.4,54.1  h0.01'/>	<g transform="translate(700.9,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Racoon</text>
+	</g>
+	<path stroke='black'  d='M713.3,177.8 M713.3,54.1  h0.01'/>	<g transform="translate(717.8,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Turkey Vulture</text>
+	</g>
+	<path stroke='black'  d='M730.2,177.8 M730.2,54.1  h0.01'/>	<g transform="translate(734.7,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Red-Winged Blackbird</text>
+	</g>
+	<path stroke='black'  d='M747.1,177.8 M747.1,54.1  h0.01'/>	<g transform="translate(751.6,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Eared Grebe</text>
+	</g>
+	<path stroke='black'  d='M764.0,177.8 M764.0,54.1  h0.01'/>	<g transform="translate(768.5,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Freshwater Lagoon</text>
+	</g>
+	<path stroke='black'  d='M780.8,177.8 M780.8,54.1  h0.01'/>	<g transform="translate(785.3,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Deer Mouse</text>
+	</g>
+	<path stroke='black'  d='M797.7,177.8 M797.7,54.1  h0.01'/>	<g transform="translate(802.2,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Western Kingbird</text>
+	</g>
+	<path stroke='black'  d='M814.6,177.8 M814.6,54.1  h0.01'/>	<g transform="translate(819.1,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Unknown Avian</text>
+	</g>
+	<path stroke='black'  d='M831.5,177.8 M831.5,54.1  h0.01'/>	<g transform="translate(836.0,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Red Wind Blackbird</text>
+	</g>
+	<path stroke='black'  d='M848.4,177.8 M848.4,54.1  h0.01'/>	<g transform="translate(852.9,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Tree Swallow</text>
+	</g>
+	<path stroke='black'  d='M865.3,177.8 M865.3,54.1  h0.01'/>	<g transform="translate(869.8,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>orangutan</text>
+	</g>
+	<path stroke='black'  d='M882.1,177.8 M882.1,54.1  h0.01'/>	<g transform="translate(886.6,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>cougar</text>
+	</g>
+	<path stroke='black'  d='M899.0,177.8 M899.0,54.1  h0.01'/>	<g transform="translate(903.5,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Klebsiella</text>
+	</g>
+	<path stroke='black'  d='M915.9,177.8 M915.9,54.1  h0.01'/>	<g transform="translate(920.4,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Surf Scoter</text>
+	</g>
+	<path stroke='black'  d='M932.8,177.8 M932.8,54.1  h0.01'/>	<g transform="translate(937.3,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Clark Grebe</text>
+	</g>
+	<path stroke='black'  d='M949.7,177.8 M949.7,54.1  h0.01'/>	<g transform="translate(954.2,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Guinni</text>
+	</g>
+	<path stroke='black'  d='M966.6,177.8 M966.6,54.1  h0.01'/>	<g transform="translate(971.1,186.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text>Barn Owl</text>
+	</g>
+	<path stroke='black'  d='M80.2,54.1 L80.2,177.8 L975.0,177.8 M975.0,54.1 M80.2,54.1  h0.01'/>	<g transform="translate(17.6,116.0) rotate(270)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+		<text>Number of Pyroprints</text>
+	</g>
+	<g transform="translate(527.6,391.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+		<text>Species</text>
+	</g>
+	<g transform="translate(527.6,31.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+		<text>Number of Pyroprints for each Species in CPLOP</text>
+	</g>
+</g>
+	<g id="gnuplot_plot_1" ><title>gnuplot_plot_1</title>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
+	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '80.2,177.8 97.2,177.8 97.2,64.9 80.2,64.9 '/>
+	</g>
+	<path stroke='black'  d='M80.2,177.8 L80.2,65.0 L97.1,65.0 L97.1,177.8 L80.2,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '97.1,177.8 114.1,177.8 114.1,84.2 97.1,84.2 '/>
+	</g>
+	<path stroke='black'  d='M97.1,177.8 L97.1,84.3 L114.0,84.3 L114.0,177.8 L97.1,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '114.0,177.8 130.9,177.8 130.9,118.8 114.0,118.8 '/>
+	</g>
+	<path stroke='black'  d='M114.0,177.8 L114.0,118.9 L130.8,118.9 L130.8,177.8 L114.0,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '130.8,177.8 147.8,177.8 147.8,156.2 130.8,156.2 '/>
+	</g>
+	<path stroke='black'  d='M130.8,177.8 L130.8,156.3 L147.7,156.3 L147.7,177.8 L130.8,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '147.7,177.8 164.7,177.8 164.7,161.9 147.7,161.9 '/>
+	</g>
+	<path stroke='black'  d='M147.7,177.8 L147.7,162.0 L164.6,162.0 L164.6,177.8 L147.7,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '164.6,177.8 181.6,177.8 181.6,167.8 164.6,167.8 '/>
+	</g>
+	<path stroke='black'  d='M164.6,177.8 L164.6,167.9 L181.5,167.9 L181.5,177.8 L164.6,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '181.5,177.8 198.5,177.8 198.5,168.9 181.5,168.9 '/>
+	</g>
+	<path stroke='black'  d='M181.5,177.8 L181.5,169.0 L198.4,169.0 L198.4,177.8 L181.5,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '198.4,177.8 215.4,177.8 215.4,170.8 198.4,170.8 '/>
+	</g>
+	<path stroke='black'  d='M198.4,177.8 L198.4,170.9 L215.3,170.9 L215.3,177.8 L198.4,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '215.3,177.8 232.2,177.8 232.2,172.4 215.3,172.4 '/>
+	</g>
+	<path stroke='black'  d='M215.3,177.8 L215.3,172.5 L232.1,172.5 L232.1,177.8 L215.3,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '232.1,177.8 249.1,177.8 249.1,174.4 232.1,174.4 '/>
+	</g>
+	<path stroke='black'  d='M232.1,177.8 L232.1,174.5 L249.0,174.5 L249.0,177.8 L232.1,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '249.0,177.8 266.0,177.8 266.0,174.4 249.0,174.4 '/>
+	</g>
+	<path stroke='black'  d='M249.0,177.8 L249.0,174.5 L265.9,174.5 L265.9,177.8 L249.0,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '265.9,177.8 282.9,177.8 282.9,175.3 265.9,175.3 '/>
+	</g>
+	<path stroke='black'  d='M265.9,177.8 L265.9,175.4 L282.8,175.4 L282.8,177.8 L265.9,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '282.8,177.8 299.8,177.8 299.8,175.4 282.8,175.4 '/>
+	</g>
+	<path stroke='black'  d='M282.8,177.8 L282.8,175.5 L299.7,175.5 L299.7,177.8 L282.8,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '299.7,177.8 316.7,177.8 316.7,175.6 299.7,175.6 '/>
+	</g>
+	<path stroke='black'  d='M299.7,177.8 L299.7,175.7 L316.6,175.7 L316.6,177.8 L299.7,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '316.6,177.8 333.5,177.8 333.5,175.7 316.6,175.7 '/>
+	</g>
+	<path stroke='black'  d='M316.6,177.8 L316.6,175.8 L333.4,175.8 L333.4,177.8 L316.6,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '333.4,177.8 350.4,177.8 350.4,175.8 333.4,175.8 '/>
+	</g>
+	<path stroke='black'  d='M333.4,177.8 L333.4,175.9 L350.3,175.9 L350.3,177.8 L333.4,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '350.3,177.8 367.3,177.8 367.3,175.9 350.3,175.9 '/>
+	</g>
+	<path stroke='black'  d='M350.3,177.8 L350.3,176.0 L367.2,176.0 L367.2,177.8 L350.3,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '367.2,177.8 384.2,177.8 384.2,176.1 367.2,176.1 '/>
+	</g>
+	<path stroke='black'  d='M367.2,177.8 L367.2,176.2 L384.1,176.2 L384.1,177.8 L367.2,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '384.1,177.8 401.1,177.8 401.1,176.2 384.1,176.2 '/>
+	</g>
+	<path stroke='black'  d='M384.1,177.8 L384.1,176.3 L401.0,176.3 L401.0,177.8 L384.1,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '401.0,177.8 418.0,177.8 418.0,176.2 401.0,176.2 '/>
+	</g>
+	<path stroke='black'  d='M401.0,177.8 L401.0,176.3 L417.9,176.3 L417.9,177.8 L401.0,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '417.9,177.8 434.8,177.8 434.8,176.2 417.9,176.2 '/>
+	</g>
+	<path stroke='black'  d='M417.9,177.8 L417.9,176.3 L434.7,176.3 L434.7,177.8 L417.9,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '434.7,177.8 451.7,177.8 451.7,176.2 434.7,176.2 '/>
+	</g>
+	<path stroke='black'  d='M434.7,177.8 L434.7,176.3 L451.6,176.3 L451.6,177.8 L434.7,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '451.6,177.8 468.6,177.8 468.6,176.2 451.6,176.2 '/>
+	</g>
+	<path stroke='black'  d='M451.6,177.8 L451.6,176.3 L468.5,176.3 L468.5,177.8 L451.6,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '468.5,177.8 485.5,177.8 485.5,176.2 468.5,176.2 '/>
+	</g>
+	<path stroke='black'  d='M468.5,177.8 L468.5,176.3 L485.4,176.3 L485.4,177.8 L468.5,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '485.4,177.8 502.4,177.8 502.4,176.3 485.4,176.3 '/>
+	</g>
+	<path stroke='black'  d='M485.4,177.8 L485.4,176.4 L502.3,176.4 L502.3,177.8 L485.4,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '502.3,177.8 519.3,177.8 519.3,176.4 502.3,176.4 '/>
+	</g>
+	<path stroke='black'  d='M502.3,177.8 L502.3,176.5 L519.2,176.5 L519.2,177.8 L502.3,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '519.2,177.8 536.1,177.8 536.1,176.6 519.2,176.6 '/>
+	</g>
+	<path stroke='black'  d='M519.2,177.8 L519.2,176.7 L536.0,176.7 L536.0,177.8 L519.2,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '536.0,177.8 553.0,177.8 553.0,177.0 536.0,177.0 '/>
+	</g>
+	<path stroke='black'  d='M536.0,177.8 L536.0,177.1 L552.9,177.1 L552.9,177.8 L536.0,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '552.9,177.8 569.9,177.8 569.9,177.0 552.9,177.0 '/>
+	</g>
+	<path stroke='black'  d='M552.9,177.8 L552.9,177.1 L569.8,177.1 L569.8,177.8 L552.9,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '569.8,177.8 586.8,177.8 586.8,177.2 569.8,177.2 '/>
+	</g>
+	<path stroke='black'  d='M569.8,177.8 L569.8,177.3 L586.7,177.3 L586.7,177.8 L569.8,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '586.7,177.8 603.7,177.8 603.7,177.4 586.7,177.4 '/>
+	</g>
+	<path stroke='black'  d='M586.7,177.8 L586.7,177.5 L603.6,177.5 L603.6,177.8 L586.7,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '603.6,177.8 620.6,177.8 620.6,177.4 603.6,177.4 '/>
+	</g>
+	<path stroke='black'  d='M603.6,177.8 L603.6,177.5 L620.5,177.5 L620.5,177.8 L603.6,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '620.5,177.8 637.4,177.8 637.4,177.5 620.5,177.5 '/>
+	</g>
+	<path stroke='black'  d='M620.5,177.8 L620.5,177.6 L637.3,177.6 L637.3,177.8 L620.5,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '637.3,177.8 654.3,177.8 654.3,177.6 637.3,177.6 '/>
+	</g>
+	<path stroke='black'  d='M637.3,177.8 L637.3,177.7 L654.2,177.7 L654.2,177.8 L637.3,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '654.2,177.8 671.2,177.8 671.2,177.6 654.2,177.6 '/>
+	</g>
+	<path stroke='black'  d='M654.2,177.8 L654.2,177.7 L671.1,177.7 L671.1,177.8 L654.2,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '671.1,177.8 688.1,177.8 688.1,177.6 671.1,177.6 '/>
+	</g>
+	<path stroke='black'  d='M671.1,177.8 L671.1,177.7 L688.0,177.7 L688.0,177.8 L671.1,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '688.0,177.8 705.0,177.8 705.0,177.6 688.0,177.6 '/>
+	</g>
+	<path stroke='black'  d='M688.0,177.8 L688.0,177.7 L704.9,177.7 L704.9,177.8 L688.0,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '704.9,177.8 721.9,177.8 721.9,177.6 704.9,177.6 '/>
+	</g>
+	<path stroke='black'  d='M704.9,177.8 L704.9,177.7 L721.8,177.7 L721.8,177.8 L704.9,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '721.8,177.8 738.7,177.8 738.7,177.6 721.8,177.6 '/>
+	</g>
+	<path stroke='black'  d='M721.8,177.8 L721.8,177.7 L738.6,177.7 L738.6,177.8 L721.8,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '738.6,177.8 755.6,177.8 755.6,177.6 738.6,177.6 '/>
+	</g>
+	<path stroke='black'  d='M738.6,177.8 L738.6,177.7 L755.5,177.7 L755.5,177.8 L738.6,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '755.5,177.8 772.5,177.8 772.5,177.6 755.5,177.6 '/>
+	</g>
+	<path stroke='black'  d='M755.5,177.8 L755.5,177.7 L772.4,177.7 L772.4,177.8 L755.5,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '772.4,177.8 789.4,177.8 789.4,177.6 772.4,177.6 '/>
+	</g>
+	<path stroke='black'  d='M772.4,177.8 L772.4,177.7 L789.3,177.7 L789.3,177.8 L772.4,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '789.3,177.8 806.3,177.8 806.3,177.6 789.3,177.6 '/>
+	</g>
+	<path stroke='black'  d='M789.3,177.8 L789.3,177.7 L806.2,177.7 L806.2,177.8 L789.3,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '806.2,177.8 823.2,177.8 823.2,177.6 806.2,177.6 '/>
+	</g>
+	<path stroke='black'  d='M806.2,177.8 L806.2,177.7 L823.1,177.7 L823.1,177.8 L806.2,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '823.1,177.8 840.0,177.8 840.0,177.6 823.1,177.6 '/>
+	</g>
+	<path stroke='black'  d='M823.1,177.8 L823.1,177.7 L839.9,177.7 L839.9,177.8 L823.1,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '839.9,177.8 856.9,177.8 856.9,177.6 839.9,177.6 '/>
+	</g>
+	<path stroke='black'  d='M839.9,177.8 L839.9,177.7 L856.8,177.7 L856.8,177.8 L839.9,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '856.8,177.8 873.8,177.8 873.8,177.6 856.8,177.6 '/>
+	</g>
+	<path stroke='black'  d='M856.8,177.8 L856.8,177.7 L873.7,177.7 L873.7,177.8 L856.8,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '873.7,177.8 890.7,177.8 890.7,177.6 873.7,177.6 '/>
+	</g>
+	<path stroke='black'  d='M873.7,177.8 L873.7,177.7 L890.6,177.7 L890.6,177.8 L873.7,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '890.6,177.8 907.6,177.8 907.6,177.7 890.6,177.7 '/>
+	</g>
+	<path stroke='black'  d='M890.6,177.8 L907.5,177.8 L890.6,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '907.5,177.8 924.5,177.8 924.5,177.7 907.5,177.7 '/>
+	</g>
+	<path stroke='black'  d='M907.5,177.8 L924.4,177.8 L907.5,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '924.4,177.8 941.3,177.8 941.3,177.7 924.4,177.7 '/>
+	</g>
+	<path stroke='black'  d='M924.4,177.8 L941.2,177.8 L924.4,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '941.2,177.8 958.2,177.8 958.2,177.7 941.2,177.7 '/>
+	</g>
+	<path stroke='black'  d='M941.2,177.8 L958.1,177.8 L941.2,177.8 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 10, 121,  81)' points = '958.1,177.8 975.1,177.8 975.1,177.7 958.1,177.7 '/>
+	</g>
+	<path stroke='black'  d='M958.1,177.8 L975.0,177.8 L958.1,177.8 Z  h0.01'/></g>
+	</g>
+	<g id="gnuplot_plot_2" ><title>gnuplot_plot_2</title>
+<g style="fill:none; color:green; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
+	<g transform="translate(93.1,56.0) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>4559</text>
+	</g>
+	<g transform="translate(110.0,75.3) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>3781</text>
+	</g>
+	<g transform="translate(126.9,109.9) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>2381</text>
+	</g>
+	<g transform="translate(143.8,147.3) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>868</text>
+	</g>
+	<g transform="translate(160.7,153.0) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>639</text>
+	</g>
+	<g transform="translate(177.6,158.9) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>401</text>
+	</g>
+	<g transform="translate(194.4,160.0) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>355</text>
+	</g>
+	<g transform="translate(211.3,161.9) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>280</text>
+	</g>
+	<g transform="translate(228.2,163.5) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>216</text>
+	</g>
+	<g transform="translate(245.1,165.5) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>135</text>
+	</g>
+	<g transform="translate(262.0,165.5) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>133</text>
+	</g>
+	<g transform="translate(278.9,166.4) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>97</text>
+	</g>
+	<g transform="translate(295.7,166.5) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>92</text>
+	</g>
+	<g transform="translate(312.6,166.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>85</text>
+	</g>
+	<g transform="translate(329.5,166.8) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>82</text>
+	</g>
+	<g transform="translate(346.4,166.9) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>75</text>
+	</g>
+	<g transform="translate(363.3,167.0) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>71</text>
+	</g>
+	<g transform="translate(380.2,167.2) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>66</text>
+	</g>
+	<g transform="translate(397.0,167.3) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>62</text>
+	</g>
+	<g transform="translate(413.9,167.3) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>61</text>
+	</g>
+	<g transform="translate(430.8,167.3) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>60</text>
+	</g>
+	<g transform="translate(447.7,167.3) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>60</text>
+	</g>
+	<g transform="translate(464.6,167.3) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>60</text>
+	</g>
+	<g transform="translate(481.5,167.3) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>60</text>
+	</g>
+	<g transform="translate(498.3,167.4) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>57</text>
+	</g>
+	<g transform="translate(515.2,167.5) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>52</text>
+	</g>
+	<g transform="translate(532.1,167.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>44</text>
+	</g>
+	<g transform="translate(549.0,168.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>30</text>
+	</g>
+	<g transform="translate(565.9,168.1) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>29</text>
+	</g>
+	<g transform="translate(582.7,168.3) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>22</text>
+	</g>
+	<g transform="translate(599.6,168.5) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>12</text>
+	</g>
+	<g transform="translate(616.5,168.5) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>11</text>
+	</g>
+	<g transform="translate(633.4,168.6) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>10</text>
+	</g>
+	<g transform="translate(650.3,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>6</text>
+	</g>
+	<g transform="translate(667.2,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>6</text>
+	</g>
+	<g transform="translate(684.0,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>6</text>
+	</g>
+	<g transform="translate(700.9,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>6</text>
+	</g>
+	<g transform="translate(717.8,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>6</text>
+	</g>
+	<g transform="translate(734.7,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>5</text>
+	</g>
+	<g transform="translate(751.6,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>4</text>
+	</g>
+	<g transform="translate(768.5,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>4</text>
+	</g>
+	<g transform="translate(785.3,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>4</text>
+	</g>
+	<g transform="translate(802.2,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>4</text>
+	</g>
+	<g transform="translate(819.1,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>4</text>
+	</g>
+	<g transform="translate(836.0,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>4</text>
+	</g>
+	<g transform="translate(852.9,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>4</text>
+	</g>
+	<g transform="translate(869.8,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>3</text>
+	</g>
+	<g transform="translate(886.6,168.7) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>3</text>
+	</g>
+	<g transform="translate(903.5,168.8) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>2</text>
+	</g>
+	<g transform="translate(920.4,168.8) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>2</text>
+	</g>
+	<g transform="translate(937.3,168.8) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>2</text>
+	</g>
+	<g transform="translate(954.2,168.8) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>2</text>
+	</g>
+	<g transform="translate(971.1,168.8) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
+		<text>2</text>
+	</g>
+</g>
+	</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
+	<path stroke='black'  d='M80.2,54.1 L80.2,177.8 L975.0,177.8 M975.0,54.1 M80.2,54.1  h0.01'/></g>
+</g>
+</svg>
+
