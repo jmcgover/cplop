@@ -29,6 +29,7 @@ public class Host extends Species{
    }
    public String key(){
       return String.format("%s,%s",super.key(),hostId);
+      /*return this.hostId;*/
    }
 
    // Isolate Handling

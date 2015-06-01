@@ -30,6 +30,14 @@ public class Phylogeny
       return this.species.get(key);
    }
 
+   public Host getHost(String key){
+      return this.hosts.get(key);
+   }
+
+   public Isolate getIsolate(String key){
+      return this.isolates.get(key);
+   }
+
    public boolean add(Species species){
       if (!this.species.containsKey(species.key())) {
          this.species.put(species.key(),species);

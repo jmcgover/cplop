@@ -9,8 +9,12 @@ all:
 	$(JC) -cp $(CP) $(SRCS) -d $(LIB)
 
 tree:
-	$(JE) -cp $(CP)
+	$(JE) -cp $(CP) PhylogenyFileMaker 
 
+treeclean:
+	rm -v *.phyl
 
 clean: 
 	rm -v $(LIB)$(CLSS)
+
+
