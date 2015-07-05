@@ -57,20 +57,24 @@ public class Meanwise extends Classifier<Isolate, Phylogeny, Species> {
 
    public Species classify(Integer k, Double alpha){
       ArrayList<ListEntry<Isolate, Double>> nearest;
-      Species result;
+      Count<Species> result;
       ListCounter<Species, Isolate, Double> counter;
+      double root2 = Math.sqrt(2);
 
       counter = new ListCounter<Species, Isolate, Double>();
 
       nearest = new ArrayList<ListEntry<Isolate, Double>>(k + 1);
       result  = null;
-      for (int i = 1; i <= k && neighbors != null && neighbors.get(0).getValue() > alpha; i++) {
+      for (int i = 1; i <= k && neighbors.get(i) != null && neighbors.get(i).getValue() > root2 * alpha; i++) {
          nearest.add(neighbors.get(i));
       }
 
+      result = null;
       result = counter.findMostPlural(nearest);
-
-      return result;
+      if (result != null) {
+         return result.getData();
+      }
+      return null;
    }
 
    public Double mean(List<Double> vals) {

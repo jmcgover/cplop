@@ -42,12 +42,16 @@ public class ListEntry<D,R extends Comparable<R>> implements Comparable<ListEntr
       }
       if (!this.data.equals(otherList.data))
          return false;
-      if (!this.value.equals(otherList.value))
-         return false;
-      if (!this.position.equals(otherList.position))
-         return false;
+//      if (!this.value.equals(otherList.value))
+//         return false;
+//      if (!this.position.equals(otherList.position))
+//         return false;
 
       return true;
+   }
+
+   public int hashCode() {
+      return this.data.hashCode();
    }
    public String toString(){
       return String.format("%d:(%s)%s", this.position, this.value, this.data);

@@ -11,7 +11,10 @@ public class ExperimentResult implements Serializable{
       this.alpha = alpha;
       this.speciesResults = new HashMap<String, SpeciesResult>();
       for (Species s : tree.getAllSpecies().values()) {
-         this.speciesResults.put(s.getCommonName(), new SpeciesResult(k, alpha, s, tree));
+         this.speciesResults.put(
+               s.getCommonName(), 
+               new SpeciesResult(k, alpha, s, tree)
+               );
       }
    }
    public int addClassification(Species s, Species c) {
@@ -72,7 +75,9 @@ public class ExperimentResult implements Serializable{
          System.exit(1);
       }
       catch (ClassNotFoundException e) {
-         System.err.println("Could not find the Class of the object you are trying to load.");
+         System.err.println(
+               "Could not find the Class of the object you are trying to load."
+               );
          System.exit(1);
       }
 
@@ -80,7 +85,10 @@ public class ExperimentResult implements Serializable{
          experiment = (ExperimentResult[][])obj;
       }
       else {
-         throw new ClassCastException( "Your file '" + filename + "' was not a ExperimentResult object.\n");
+         throw new ClassCastException(
+               "Your file '" + filename + 
+               "' was not a ExperimentResult object.\n"
+               );
       }
       return experiment;
    }
@@ -124,7 +132,9 @@ public class ExperimentResult implements Serializable{
          System.exit(1);
       }
       catch (ClassNotFoundException e) {
-         System.err.println("Could not find the Class of the object you are trying to load.");
+         System.err.println(
+               "Could not find the Class of the object you are trying to load."
+               );
          System.exit(1);
       }
 
@@ -132,7 +142,9 @@ public class ExperimentResult implements Serializable{
          experiment = (ExperimentResult)obj;
       }
       else {
-         throw new ClassCastException( "Your file '" + resultFilename + "' was not a ExperimentResult object.\n");
+         throw new ClassCastException( 
+               "Your file '" + resultFilename + 
+               "' was not a ExperimentResult object.\n");
       }
       return experiment;
    }

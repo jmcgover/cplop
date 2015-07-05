@@ -2,6 +2,10 @@ import java.util.*;
 
 public class Driver{
 
+   public enum Method {
+      MEAN, WINNER, SETWISE, INTERSECTION
+   }
+
    public static void main(String[] args) {
       java.util.Date date = new java.util.Date();
       Phylogeny tree = null;
@@ -10,6 +14,7 @@ public class Driver{
       boolean filenameSet = false;
       ApproachWinner experiment = null;
       TreeFilter filter;
+      Method method = null;
 
       // Experiment Parameters
       int k[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,17};
@@ -29,6 +34,18 @@ public class Driver{
                   resultFilename = args[++i];
                   System.out.printf("Using custom results filename %s.\n", resultFilename);
                }
+               if (args[i].equals("-m") | args[i].equals("--meanwise")) {
+                  method = Method.MEAN;
+               }
+               if (args[i].equals("-w") | args[i].equals("--winner")) {
+                  method = Method.WINNER;
+               }
+               if (args[i].equals("-s") | args[i].equals("--setwise")) {
+                  method = Method.SETWISE;
+               }
+               if (args[i].equals("-i") | args[i].equals("--intersection")) {
+                  method = Method.INTERSECTION;
+               }
                // Help
                if (args[i].equals("-h") | args[i].equals("--help")) {
                   printUsage();
@@ -42,7 +59,23 @@ public class Driver{
       }
 
       if (filenameSet == false) {
-         printUsage();
+         printUsage("Please provide a filename.");
+      }
+      if (method == null) {
+         printUsage("Please specify which method you want to perform.");
+      }
+      System.err.printf("Using method ");
+      switch (method) {
+         case MEAN:           System.err.printf("MEAN\n");
+                              break;
+         case WINNER:         System.err.printf("WINNER\n");
+                              break;
+         case SETWISE:        System.err.printf("SETWISE\n");
+                              break;
+         case INTERSECTION:   System.err.printf("INTERSECTION\n");
+                              break;
+         default:             System.err.printf("INVALID METHOD %s!\n", method);
+                              printUsage("Please proved a valid method.");
       }
 
       // Load Tree
@@ -77,11 +110,22 @@ public class Driver{
          System.err.println("Testing " + s + "...");
          for (Host h : s.getHosts().values()) {
             for (Isolate i : h.getIsolates().values()) {
-               classifier = new Meanwise(i, tree);
-               for (int j = 0; j < k.length; j++) {
-                  for (int a = 0; a < alpha.length; a++) {
+               switch (method) {
+                  case MEAN:           classifier = new Meanwise(i, tree);
+                                       break;
+                  case WINNER:         classifier = new Winner(i, tree);
+                                       break;
+                  case SETWISE:        classifier = new Setwise(i, tree);
+                                       break;
+                  case INTERSECTION:   classifier = new Intersection(i, tree);
+                                       break;
+                  default:             printUsage(String.format("Invalid method: %d", method));
+               }
+               for (int a = 0; a < alpha.length; a++) {
+                  for (int j = 0; j < k.length; j++) {
                      result = null;
                      result = classifier.classify(k[j], alpha[a]);
+//                     System.out.printf("CLASSIFIED %s as %s\n", s, result);
                      results[j][a].addClassification(s, result);
                   }
                }
@@ -113,9 +157,15 @@ public class Driver{
       System.err.println(usage);
       System.err.println();
       System.err.println("Options:");
-      printOption("[-h  | --help]","displays this help and exits");
+      printOption("[-h  | --help]","\tdisplays this help and exits");
       printOption("<-f  | --filename>","filename of the tree to load");
-      printOption("<-o  | --output>","filename to save the experiment results as");
+      printOption("[-o  | --output]","filename to save the experiment results as");
+      printOption("<method>","\tmethod of classification to use");
+      System.err.println("Methods:");
+      printOption("[-m  | --meanwise]","mean-based method");
+      printOption("[-w  | --winner]","winner-based method");
+      printOption("[-s  | --setwise]","set-based method");
+      printOption("[-i  | --intersection]","intersection-based method");
       System.exit(1);
    }
    public static void printOption(String flag, String explanation){

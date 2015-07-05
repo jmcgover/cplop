@@ -19,6 +19,10 @@ public class PearsonIsolate implements Similarities<Isolate, Double> {
          this.dispensations = dispensations;
       }
 
+      public String toString() {
+         return "Pearson Region " + this.region;
+      }
+
       public Double similarity(Isolate a, Isolate b) {
          double repA[];
          double repB[];
@@ -29,10 +33,10 @@ public class PearsonIsolate implements Similarities<Isolate, Double> {
          /*Check Null Returns*/
          if (repA == null || repB == null) {
             if (repA == null) {
-//               System.out.printf("%s(a) did not have %s representative.\n", a, this.region);
+               System.out.printf("%s(a) did not have %s representative.\n", a, this.region);
             }
             if (repB == null) {
-//               System.out.printf("%s(b) did not have %s representative.\n", b, this.region);
+               System.out.printf("%s(b) did not have %s representative.\n", b, this.region);
             }
             return null;
          }
