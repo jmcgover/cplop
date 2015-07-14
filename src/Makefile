@@ -24,26 +24,55 @@ treeclean:
 resultclean:
 	rm -v *.res
 
-csv: set mean winner
+col: setCol meanCol winnerCol intersectionCol
+	
+meanCol: mean/ mean.res $(LIB)ResultsPrinter.class
+	java -cp $(CP) ResultsPrinter -f mean.res -m -c
 
-set: set/ set.res
-	java -cp $(CP) ResultsPrinter -f set.res > set.csv
+winnerCol: winner/ winner.res $(LIB)ResultsPrinter.class
+	java -cp $(CP) ResultsPrinter -f winner.res -m -c
 
-mean: mean/ mean.res
-	java -cp $(CP) ResultsPrinter -f mean.res > mean.csv
+setCol: set/ set.res $(LIB)ResultsPrinter.class
+	java -cp $(CP) ResultsPrinter -f set.res -m -c
 
-winner: winner/ winner.res
-	java -cp $(CP) ResultsPrinter -f winner.res > winner.csv
+intersectionCol: intersection/ intersection.res $(LIB)ResultsPrinter.class
+	java -cp $(CP) ResultsPrinter -f intersection.res -m -c
+
+csv: set mean winner intersection
+
+$(LIB)ResultsPrinter.class: $(LIB)ExperimentResult.class $(LIB)Classification.class $(LIB)SpeciesResult.class ResultsPrinter.java
+	$(JC) $(FLAGS) -cp $(CP) ResultsPrinter.java -d $(LIB)
+
+
+mean: mean/ mean.res $(LIB)ResultsPrinter.class
+	java -cp $(CP) ResultsPrinter -f mean.res -m -o mean.csv
+
+winner: winner/ winner.res $(LIB)ResultsPrinter.class
+	java -cp $(CP) ResultsPrinter -f winner.res -m -o winner.csv
+
+set: set/ set.res $(LIB)ResultsPrinter.class
+	java -cp $(CP) ResultsPrinter -f set.res -m -o set.csv
+
+intersection: intersection/ intersection.res $(LIB)ResultsPrinter.class
+	java -cp $(CP) ResultsPrinter -f intersection.res -m -o intersection.csv
 
 #Result Files
-set.res: tree.phyl
-	java -cp $(CP) ApproachSet -f tree.phyl -o set.res
+results: mean.res winner.res set.res intersection.res 
 
-mean.res: tree.phyl
-	java -cp $(CP) ApproachMean -f tree.phyl -o mean.res
+mean.res: tree.phyl $(LIB)Meanwise.class
+	java -cp $(CP) Driver -f tree.phyl -o mean.res -m
 
-winner.res: tree.phyl
-	java -cp $(CP) ApproachWinner -f tree.phyl -o winner.res
+winner.res: tree.phyl $(LIB)Winner.class
+	java -cp $(CP) Driver -f tree.phyl -o winner.res -w
+
+set.res: tree.phyl $(LIB)Setwise.class
+	java -cp $(CP) Driver -f tree.phyl -o set.res -s
+
+intersection.res: tree.phyl $(LIB)Intersection.class
+	java -cp $(CP) Driver -f tree.phyl -o intersection.res -i
+
+$(LIB)%.class: %.java
+	$(JC) $(FLAGS) -cp $(CP) $^ -d $(LIB)
 
 #Result Folders
 set/: results/
@@ -53,6 +82,9 @@ mean/: results/
 	mkdir -p $^$@
 
 winner/: results/
+	mkdir -p $^$@
+
+intersection/: results/
 	mkdir -p $^$@
 
 results/:

@@ -116,7 +116,7 @@ public class ResultsPrinter {
       for (SpeciesResult speciesName : speciesNames) {
          stream.printf("%s,", speciesName);
       }
-      stream.printf("%s,", "total");
+      stream.printf("%s", "total");
       stream.printf("\n");
       for (int k = 0; k < results.length; k++) {
          for (int a = 0; a < results[k].length; a++) {
@@ -130,7 +130,7 @@ public class ResultsPrinter {
                for (Classification c : classifications) {
                   stream.printf("%d,", c.getNumClassifications());
                }
-               stream.printf("%d,", species.getTotalClassifications());
+               stream.printf("%d", species.getTotalClassifications());
                stream.printf("\n");
             }
          }
