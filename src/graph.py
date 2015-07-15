@@ -22,6 +22,7 @@ def atpy_csv(filename):
     return data
 
 def calc_recall(data, k, alpha, species):
+    print("Calculating recall...")
     name_len = len(species)
     recall = Table(names = ('species', 'k', 'alpha', 'recall', 'correct',
         'classifications'), dtype = ('S' + str(name_len), 'i32', 'f64', 'f64',
@@ -39,6 +40,7 @@ def calc_recall(data, k, alpha, species):
     return recall
 
 def calc_precision(data, k, alpha, species):
+    print("Calculating precision...")
     name_len = len(species)
     precision = Table(names = ('species', 'k', 'alpha', 'precision', 'correct',
         'classifications'), dtype = ('S' + str(name_len), 'i32', 'f64', 'f64',
@@ -70,11 +72,21 @@ def main():
     precision = calc_precision(data, k_limit, alpha, species)
     print(recall)
     print(precision)
-    pyplot.scatter(recall['k'], recall['recall'], label='recall')
-    pyplot.scatter(precision['k'], precision['precision'], label='precision')
+
+
+    pyplot.scatter(recall['k'], recall['recall'], label='recall',
+            color='#FADA5E')
+    pyplot.scatter(precision['k'], precision['precision'], label='precision',
+            color='#0A7951')
     axes = pyplot.gca()
     axes.set_xlim([recall[0]['k'] - 1, recall[-1]['k'] + 1])
     axes.set_ylim(0, 100)
+    pyplot.yticks(numpy.arange(0, 100, 10))
+    axes.set_title('Precision vs. Recall for ' + species + ' at alpha ' +
+            str(alpha))
+    pyplot.ylabel('Accuracy (%)')
+    pyplot.xlabel('k')
+    pyplot.legend()
     pyplot.show()
     return 0
     
