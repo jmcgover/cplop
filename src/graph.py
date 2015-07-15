@@ -23,21 +23,39 @@ def atpy_csv(filename):
 
 def calc_recall(data, k, alpha, species):
     name_len = len(species)
-    recall = Table(names = ('species', 'k', 'alpha', 'recall',
+    recall = Table(names = ('species', 'k', 'alpha', 'recall', 'correct',
         'classifications'), dtype = ('S' + str(name_len), 'i32', 'f64', 'f64',
-            'i32'))
+            'i32', 'i32'))
 
     for d in data:
         if d['k'] <= k and d['alpha'] == alpha and d['species'] == species: 
             classifications = 0
             for o in data.colnames:
                 if o != 'total' and o != 'k' and o != 'alpha' and o != 'species':
-                    classifications = classifications + d[o]
+                    classifications += d[o]
             accuracy = round(d[species] / classifications * 100, 3)
             recall.add_row((d['species'], d['k'], d['alpha'], accuracy,
-                    classifications))
+                    d[species], classifications))
     return recall
 
+def calc_precision(data, k, alpha, species):
+    name_len = len(species)
+    precision = Table(names = ('species', 'k', 'alpha', 'precision', 'correct',
+        'classifications'), dtype = ('S' + str(name_len), 'i32', 'f64', 'f64',
+            'i32', 'i32'))
+    measured_k = numpy.unique(data['k'])
+    for m_k in measured_k:
+        if m_k <= k:
+            total = 0
+            correct = 0
+            for d in data:
+                if d['k'] == m_k and d['alpha']:
+                    total += d[species]
+                    if d['species'] == species:
+                        correct += d[species]
+            accuracy = round(correct / total * 100, 3)
+            precision.add_row((species, m_k, alpha, accuracy, correct, total))
+    return precision
 
 def main():
     if len(sys.argv) < 5:
@@ -49,8 +67,14 @@ def main():
     print("Parsing " + filename + "...")
     data = atpy_csv(filename)
     recall = calc_recall(data, k_limit, alpha, species)
+    precision = calc_precision(data, k_limit, alpha, species)
     print(recall)
-    pyplot.scatter(recall['k'], recall['recall'])
+    print(precision)
+    pyplot.scatter(recall['k'], recall['recall'], label='recall')
+    pyplot.scatter(precision['k'], precision['precision'], label='precision')
+    axes = pyplot.gca()
+    axes.set_xlim([recall[0]['k'] - 1, recall[-1]['k'] + 1])
+    axes.set_ylim(0, 100)
     pyplot.show()
     return 0
     
