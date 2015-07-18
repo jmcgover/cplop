@@ -14,13 +14,13 @@ def print_usage(msg=None):
     if msg:
         print(msg)
         exit_val = 22
-    print("usage: " + sys.argv[0] + " <filename> <species> <k limit> <alpha>")
+    print("usage: " + sys.argv[0] + " <species> <alpha>")
     sys.exit(exit_val)
 
 def atpy_csv(filename):
     data = ascii.read(filename)
     return data
-def filter_by_alpha(data, key, value):
+def filter_by_keyvalue(data, key, value):
     print("Filtering by %s == %s" % (key, str(value)))
     new_data = Table(data[0:0])
     for d in data:
@@ -121,70 +121,63 @@ params = {'text.usetex' : True,
           'legend.loc' : 'best'
           }
 matplotlib.rcParams.update(params);
-def plot_metrics_per_k(metrics, species, filename):
-    alpha = numpy.unique(metrics['alpha'])
+gold='#FADA5E'
+green='#0A7951'
+alg_keys = ['mean','winner','union', 'intersection']
+colors = dict(zip(alg_keys,['purple', 'orange', 'red', green]))
+def plot_metrics_per_k(species, alpha, metrics, filename):
 
-    pyplot.scatter(metrics['k'], metrics['recall'],    label='recall',    marker='s',   color='black')
-    pyplot.scatter(metrics['k'], metrics['precision'], label='precision', marker = 'p', color='black')
-    pyplot.scatter(metrics['k'], metrics['fmeasure'],  label='fmeasure',  marker = 'x', color='black')
+    print("Plotting metrics...")
+    for key in alg_keys:
+        metric = metrics[key]
+        this_color = colors[key]
+        pyplot.scatter(metric['k'], metric['recall'],    label='%s: $R$'%key,     marker='s',   color=this_color)
+        pyplot.scatter(metric['k'], metric['precision'], label='%s: $P$'%key,     marker = 'p', color=this_color)
+        pyplot.scatter(metric['k'], metric['fmeasure'],  label='%s: $F_1$'%key, marker = 'x', color=this_color)
     axes = pyplot.gca()
-    axes.set_xlim([numpy.min(metrics['k']) - 1, numpy.max(metrics['k']) + 1])
+    metric = metrics[list(metrics)[0]]
+    axes.set_xlim([numpy.min(metric['k']) - 1, numpy.max(metric['k']) + 1])
     axes.set_ylim(0, 1.05)
-    pyplot.xticks(numpy.arange(numpy.min(metrics['k']) - 1, numpy.max(metrics['k']) + 1))
+    pyplot.xticks(numpy.arange(numpy.min(metric['k']) - 1, numpy.max(metric['k']) + 1))
     pyplot.yticks(numpy.arange(0, 1.04, .05))
     axes.set_title('%s Precision, Recall, and $F$-Measure at $\\alpha=$ %0.2f' % (species, alpha))
     pyplot.ylabel('Accuracy ')
     pyplot.xlabel('$k$')
-    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1))
+    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=4)
+
+    print("Saving as %s..." % filename)
     pyplot.savefig(filename, bbox_extra_artists=(legend,), bbox_inches='tight');
     pyplot.close()
 
-def plot_precision_v_recall(metrics, species, filename):
+def plot_precision_v_recall(species, alpha, metrics, filename):
 
-    alpha = numpy.unique(metrics['alpha'])
+    print("Plotting p vs r...")
+    for key in alg_keys:
+        metric = metrics[key]
+        this_color = colors[key]
+        pyplot.scatter(metric['recall'], metric['precision'], label='%s' % key, marker='o', edgecolors=this_color, facecolors='none', s=80)
+        for label, x, y in zip(metric['k'],metric['recall'], metric['precision']):
+            pyplot.annotate(str(label), xy=(x,y), xytext=(x,y), va='center', ha='center', color=this_color, size='xx-small');
 
-    pyplot.scatter(metrics['precision'], metrics['recall'],    label='precision vs. recall',    marker='x',   color='black')
     axes = pyplot.gca()
     axes.set_xlim(0, 1.05)
     axes.set_ylim(0, 1.05)
     axes.set_aspect('equal')
     pyplot.xticks(numpy.arange(0, 1.05, .1))
     pyplot.yticks(numpy.arange(0, 1.05, .1))
-    axes.set_title('%s Precision vs. Recall at $\\alpha=$ %0.2f' % (species, alpha))
-    pyplot.ylabel('Recall')
-    pyplot.xlabel('Precision')
-    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1))
+    axes.set_title('%s Recall vs. Precision at $\\alpha=$ %0.2f' % (species, alpha))
+    pyplot.xlabel('Recall')
+    pyplot.ylabel('Precision')
+    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=2)
 
-    middle = len(metrics['k']) / 2
-    middle = numpy.int32(middle)
-
-
-    first = metrics[0]
-    f_x = first['precision']
-    f_y = first['recall']
-    f_a_y = f_y/2 if f_y > abs(1-f_y)/2 else abs(1+f_y)/2
-    last = metrics[-1]
-    l_x = last['precision']
-    l_y = last['recall']
-    l_a_y = l_y/2 if l_y > abs(1-l_y)/2 else abs(1+l_y)/2
-
-    middle_ndx = numpy.int32(len(metrics['k']) / 2 - 1)
-    middle = metrics[middle_ndx]
-    m_x = middle['precision']
-    m_y = middle['recall']
-    m_a_y = m_y/2 if m_y > abs(1-m_y) else abs(1+m_y)/2
-
-    arrow = dict(arrowstyle = '->', connectionstyle = 'arc3,rad=0')
-    pyplot.annotate( '$k$ = ' + str(first['k']), xy = (f_x,f_y), xytext = (f_x, f_a_y), rotation=90, va = 'center', ha = 'center', arrowprops=arrow)
-    pyplot.annotate( '$k$ = ' + str(middle['k']), xy = (m_x,m_y), xytext = (m_x, m_a_y), rotation=90, va = 'center', ha = 'center', arrowprops=arrow)
-    pyplot.annotate( '$k$ = ' + str(last['k']), xy = (l_x, l_y), xytext = (l_x, l_a_y), rotation=90, va = 'center', ha = 'center', arrowprops=arrow)
+    print("Saving as %s..." % filename)
     pyplot.savefig(filename, bbox_extra_artists=(legend,), bbox_inches='tight');
     pyplot.close()
 
 
 
 def main():
-    if len(sys.argv) < 5:
+    if len(sys.argv) < 3:
         print_usage("Not enough arguments!")
     species = numpy.str(sys.argv[1])
     alpha   = numpy.float64(sys.argv[2])
@@ -195,27 +188,42 @@ def main():
     u_name = 'set.csv'
     i_name = 'intersection.csv'
 
+    print("Reading %s" % m_name)
     m_data = atpy_csv(m_name)
+    print("Reading %s" % w_name)
     w_data = atpy_csv(w_name)
+    print("Reading %s" % u_name)
     u_data = atpy_csv(u_name)
+    print("Reading %s" % i_name)
     i_data = atpy_csv(i_name)
+    if species == 'Overall' or species == 'overall':
+        m_data = filter_by_keyvalue(m_data, 'alpha', alpha)
+        w_data = filter_by_keyvalue(w_data, 'alpha', alpha)
+        u_data = filter_by_keyvalue(u_data, 'alpha', alpha)
+        i_data = filter_by_keyvalue(i_data, 'alpha', alpha)
 
+
+    print("Calculating %s" % 'mean')
     m_metr = calc_metrics(m_data, k_limit, alpha, species)
+    print("Calculating %s" % 'winner')
     w_metr = calc_metrics(w_data, k_limit, alpha, species)
+    print("Calculating %s" % 'union')
     u_metr = calc_metrics(u_data, k_limit, alpha, species)
+    print("Calculating %s" % 'intersection')
     i_metr = calc_metrics(i_data, k_limit, alpha, species)
 
     print(m_metr)
     print(w_metr)
     print(u_metr)
     print(i_metr)
-    sys.exit(1)
 
-    metr_fname = "./figures/%s-ALL-metrics-%d-%1.3f.pdf" % (species, filename.replace('.',''), k_limit, alpha)
-    plot_metrics_per_k(metrics, species, metr_fname)
+    all_metrics = dict(zip(['mean', 'winner', 'union', 'intersection', ], [m_metr, w_metr, u_metr, i_metr]))
 
-    pvr_fname = "./figures/%s-ALL-pvr-%d-%1.3f.pdf" % (species, filename.replace('.',''), k_limit, alpha)
-    plot_precision_v_recall(metrics, species, pvr_fname)
+    metr_fname = "./figures/%s-ALL-metrics-%d-%1.3f.pdf" % (species, k_limit, alpha)
+    plot_metrics_per_k(species, alpha, all_metrics, metr_fname)
+
+    pvr_fname = "./figures/%s-ALL-pvr-%d-%1.3f.pdf" % (species, k_limit, alpha)
+    plot_precision_v_recall(species, alpha, all_metrics, pvr_fname)
 
     return 0
     
