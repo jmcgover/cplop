@@ -4,12 +4,16 @@ import java.util.*;
 public class ExperimentResult implements Serializable{
    private int k;
    private double alpha;
+   private int total;
+   private int attempts;
    HashMap<String, SpeciesResult> speciesResults;
 
    public ExperimentResult(int k, double alpha, Phylogeny tree) {
       this.k = k;
       this.alpha = alpha;
       this.speciesResults = new HashMap<String, SpeciesResult>();
+      this.total = 0;
+      this.attempts = 0;
       for (Species s : tree.getAllSpecies().values()) {
          this.speciesResults.put(
                s.getCommonName(), 
@@ -18,12 +22,20 @@ public class ExperimentResult implements Serializable{
       }
    }
    public int addClassification(Species s, Species c) {
-      if (s == null) {
-         return 0;
+      this.speciesResults.get(s.getCommonName()).addClassification(c);
+      if (c != null) {
+         this.speciesResults.get(c.getCommonName()).addClassifiedAs();
+         this.total++;
       }
-      return this.speciesResults.get(s.getCommonName()).addClassification(c);
+      return ++this.attempts;
    }
 
+   public int getTotal() {
+      return this.total;
+   }
+   public int getAttempts() {
+      return this.attempts;
+   }
    public int getK() {
       return this.k;
    }

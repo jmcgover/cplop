@@ -30,6 +30,15 @@ public class Species implements Comparable<Species>, Serializable, Classified<Sp
    public HashMap<String, Host> getHosts(){
       return new HashMap<String, Host>(this.hosts);
    }
+   public int getHostCount() {
+      return this.hosts.values().size();
+   }
+   public int getIsolateCount() {
+      return getIsolates().values().size();
+   }
+   public int getPyroprintCount(){
+      return getPyroprints().values().size();
+   }
    public int getGoodPyroprintCount(){
       int count = 0;
       for (Pyroprint p : getPyroprints().values()) {
@@ -50,8 +59,12 @@ public class Species implements Comparable<Species>, Serializable, Classified<Sp
       return count;
    }
 
-   public int getAllPyroprintCount(){
-      return getPyroprints().values().size();
+   public HashMap<String, Isolate> getIsolates(){
+      HashMap<String, Isolate> isolates = new HashMap<String, Isolate>();
+      for (Host h : hosts.values()) {
+         isolates.putAll(h.getIsolates());
+      }
+      return isolates;
    }
    public HashMap<String, Pyroprint> getPyroprints(){
       HashMap<String, Pyroprint> pyroprints = new HashMap<String, Pyroprint>();

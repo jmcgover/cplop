@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Driver{
 
@@ -15,6 +16,7 @@ public class Driver{
       ApproachWinner experiment = null;
       TreeFilter filter;
       Method method = null;
+      boolean statistics = false;
 
       // Experiment Parameters
       int k[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,17};
@@ -46,6 +48,9 @@ public class Driver{
                if (args[i].equals("-i") | args[i].equals("--intersection")) {
                   method = Method.INTERSECTION;
                }
+               if (args[i].equals("-z") | args[i].equals("--statistics")) {
+                  statistics = true;
+               }
                // Help
                if (args[i].equals("-h") | args[i].equals("--help")) {
                   printUsage();
@@ -61,21 +66,23 @@ public class Driver{
       if (filenameSet == false) {
          printUsage("Please provide a filename.");
       }
-      if (method == null) {
+      if (method == null && statistics == false) {
          printUsage("Please specify which method you want to perform.");
       }
-      System.err.printf("Using method ");
-      switch (method) {
-         case MEAN:           System.err.printf("MEAN\n");
-                              break;
-         case WINNER:         System.err.printf("WINNER\n");
-                              break;
-         case SETWISE:        System.err.printf("SETWISE\n");
-                              break;
-         case INTERSECTION:   System.err.printf("INTERSECTION\n");
-                              break;
-         default:             System.err.printf("INVALID METHOD %s!\n", method);
-                              printUsage("Please proved a valid method.");
+      if (!statistics) {
+         System.err.printf("Using method ");
+         switch (method) {
+            case MEAN:           System.err.printf("MEAN\n");
+                                 break;
+            case WINNER:         System.err.printf("WINNER\n");
+                                 break;
+            case SETWISE:        System.err.printf("SETWISE\n");
+                                 break;
+            case INTERSECTION:   System.err.printf("INTERSECTION\n");
+                                 break;
+            default:             System.err.printf("INVALID METHOD %s!\n", method);
+                                 printUsage("Please proved a valid method.");
+         }
       }
 
       // Load Tree
@@ -90,12 +97,18 @@ public class Driver{
       tree = filter.removeEnvironmental(tree);
       tree = filter.removeBad(tree);
       tree = filter.removeIncompleteIsolates(tree);
-      tree = filter.removeSpeciesBelow(tree, 5);
+      tree = filter.removeSpeciesBelow(tree, 4);
+
+      LinkedList<Species> allSpecies = new LinkedList<Species>(tree.getAllSpecies().values());
+      Collections.sort(allSpecies);
+
+      if (statistics) {
+         printMergedStats(System.out, tree);
+         System.exit(0);
+      }
 
       //Run Experiments
       Classifier<Isolate, Phylogeny, Species> classifier = null;
-      LinkedList<Species> allSpecies = new LinkedList<Species>(tree.getAllSpecies().values());
-      Collections.sort(allSpecies);
 
       /*Track Results*/
       ExperimentResult[][] results = new ExperimentResult[k.length][alpha.length];
@@ -170,5 +183,77 @@ public class Driver{
    }
    public static void printOption(String flag, String explanation){
       System.err.printf("\t%s\t%s\n",flag,explanation);
+   }
+   public static void printMergedStats(PrintStream statsStream, Phylogeny tree) {
+      LinkedList<Species> allSpecies = new LinkedList<Species>(tree.getAllSpecies().values());
+      Collections.sort(allSpecies);
+      
+      HashMap<String, String> ignoreList = new HashMap<String, String>();
+      ignoreList.put("Cw", "Cw");
+      ignoreList.put("Dg", "Dg");
+      ignoreList.put("Hu", "Hu");
+      ignoreList.put("Cw and Dg", "Cw and Dg");
+      ignoreList.put("Hu Cw and Dg", "Hu Cw and Dg");
+      ignoreList.put("Hu and Dg", "Hu and Dg");
+      ignoreList.put("Hu and Cw", "Hu and Cw");
+      ignoreList.put("Human UTI", "Human UTI");
+      ignoreList.put("Pig/Swine", "Pig/Swine");
+      ignoreList.put("Wild Pig", "Wild Pig");
+      ignoreList.put("unknown", "unknown");
+
+      statsStream.printf("%s,%s,%s,%s,%s\n","Index","Species Name","$\\host{}$","$\\isol{}$","$\\pyro{}$");
+      int specNum = 0;
+      int perSpecHosts = 0;
+      int perSpecIsols = 0;
+      int perSpecPyros = 0;
+      for (Species s : allSpecies) {
+         if (null == ignoreList.get(s.getCommonName())) {
+            perSpecHosts = tree.getHostCount(s);
+            perSpecIsols = tree.getIsolateCount(s);
+            perSpecPyros = tree.getPyroprintCount(s);
+            statsStream.printf("%d,%s,%d,%d,%d\n",specNum,s,perSpecHosts,perSpecIsols,perSpecPyros);
+            specNum++;
+         }
+      }
+      int totSpecs = tree.getSpeciesCount();
+      int totHosts = tree.getHostCount();
+      int totIsols = tree.getIsolateCount();
+      int totPyros = tree.getPyroprintCount();
+      statsStream.printf("%s,%d,%d,%d,%d\n","Total",specNum - 1,totHosts,totIsols,totPyros);
+   }
+   public static void printRawStats(PrintStream statsStream, Phylogeny tree) {
+      LinkedList<Species> allSpecies = new LinkedList<Species>(tree.getAllSpecies().values());
+      Collections.sort(allSpecies);
+      System.err.println("Running statistics. Don't give a shit about your experiments.");
+      statsStream.printf("%s,%s,%s,%s,%s\n","Index","Species Name","$\\host{}$","$\\isol{}$","$\\pyro{}$");
+      int specNum = 1;
+      int totSpecs = 0;
+      int totHosts = 0;
+      int totIsols = 0;
+      int totPyros = 0;
+      int perSpecHosts = 0;
+      int perSpecIsols = 0;
+      int perSpecPyros = 0;
+      for (Species s : allSpecies) {
+         for (Host h : s.getHosts().values()) {
+            for (Isolate i : h.getIsolates().values()) {
+               for (Pyroprint p : i.getPyroprints().values()) {
+                  totPyros++;
+                  perSpecPyros++;
+               }
+               totIsols++;
+               perSpecIsols++;
+            }
+            totHosts++;
+            perSpecHosts++;
+         }
+         statsStream.printf("%d,%s,%d,%d,%d\n",specNum,s,perSpecHosts,perSpecIsols,perSpecPyros);
+         totSpecs++;
+         specNum++;
+         perSpecHosts = 0;
+         perSpecIsols = 0;
+         perSpecPyros = 0;
+      }
+      statsStream.printf("%s,%d,%d,%d,%d\n","Total",totSpecs,totHosts,totIsols,totPyros);
    }
 }

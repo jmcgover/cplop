@@ -20,7 +20,7 @@ public class TreeFilter {
    public Phylogeny removeSpeciesBelow(Phylogeny tree, int val){
       Phylogeny filtered = new Phylogeny(tree);
       for (Species s : tree.getAllSpecies().values()) {
-         if (s.getGoodPyroprintCount() < val) {
+         if (s.getIsolateCount() < val) {
             for (Host h : s.getHosts().values()) {
                for (Isolate i : h.getIsolates().values()) {
                   for (Pyroprint p : i.getPyroprints().values() ) {

@@ -103,7 +103,7 @@ public class ResultsPrinter {
                for (Classification c : classifications) {
                   stream.printf("%5d|", c.getNumClassifications());
                }
-               stream.printf("%4d|", species.getTotalClassifications());
+               stream.printf("%4d|", species.getTotal());
                stream.printf("\n");
             }
          }
@@ -116,7 +116,8 @@ public class ResultsPrinter {
       for (SpeciesResult speciesName : speciesNames) {
          stream.printf("%s,", speciesName);
       }
-      stream.printf("%s", "total");
+      stream.printf("%s,", "total");
+      stream.printf("%s", "attempts");
       stream.printf("\n");
       for (int k = 0; k < results.length; k++) {
          for (int a = 0; a < results[k].length; a++) {
@@ -130,9 +131,17 @@ public class ResultsPrinter {
                for (Classification c : classifications) {
                   stream.printf("%d,", c.getNumClassifications());
                }
-               stream.printf("%d", species.getTotalClassifications());
+               stream.printf("%d,", species.getTotal());
+               stream.printf("%d", species.getAttempts());
                stream.printf("\n");
             }
+            stream.printf("%d,%1.3f,%s,", thisResult.getK(), thisResult.getAlpha(), "Overall");
+            for (SpeciesResult species : perSpecies) {
+               stream.printf("%d,", species.getNumClassifiedAs());
+            }
+            stream.printf("%d,", thisResult.getTotal());
+            stream.printf("%d", thisResult.getAttempts());
+            stream.printf("\n");
          }
       }
    }
@@ -151,7 +160,7 @@ public class ResultsPrinter {
                            s.getK(),
                            s.getAlpha(),
                            s.getCommonName(),
-                           1.0*c.getClassifications() / s.getTotalClassifications());
+                           1.0*c.getClassifications() / s.getTotal());
                   }
                }
             }

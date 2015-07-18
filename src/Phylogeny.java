@@ -85,7 +85,63 @@ public class Phylogeny
 //      }
       return this.pyroprints.remove(p.key());
    }
-   
+
+   public int getSpeciesCount() {
+      return this.species.values().size();
+   }
+
+   public int getHostCount() {
+      return this.hosts.values().size();
+   }
+
+   public int getIsolateCount() {
+      return this.isolates.values().size();
+   }
+
+   public int getPyroprintCount() {
+      return this.pyroprints.values().size();
+   }
+
+   public int getSpeciesCount(Species s) {
+      int count = 0;
+      for (Species o : this.species.values()) {
+         if (s.equals(o)) {
+            count ++;
+         }
+      }
+      return count;
+   }
+
+   public int getHostCount(Species s) {
+      int count = 0;
+      for (Species o : this.species.values()) {
+         if (s.equals(o)) {
+            count += o.getHostCount();
+         }
+      }
+      return count;
+   }
+
+   public int getIsolateCount(Species s) {
+      int count = 0;
+      for (Species o : this.species.values()) {
+         if (s.equals(o)) {
+            count += o.getIsolateCount();
+         }
+      }
+      return count;
+   }
+
+   public int getPyroprintCount(Species s) {
+      int count = 0;
+      for (Species o : this.species.values()) {
+         if (s.equals(o)) {
+            count += o.getPyroprintCount();
+         }
+      }
+      return count;
+   }
+
    public Species getSpecies(String key){
       return this.species.get(key);
    }
