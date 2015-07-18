@@ -136,39 +136,49 @@ params = {'text.usetex' : True,
 matplotlib.rcParams.update(params);
 gold='#FADA5E'
 green='#0A7951'
-alg_keys = ['mean','winner','union', 'intersection']
-colors = dict(zip(alg_keys,['purple', 'orange', 'red', green]))
-def plot_metrics_per_k(species, alpha, metrics, filename):
+color_vals = ['purple', 'orange', 'red', green, 'blue', 'black', 'magenta', 'red']
+def plot_metrics_per_k(species, alphas, metrics, filename):
+    alpha_keys = []
+    for alpha in alphas:
+        alpha_keys.append("%.3f" % alpha)
+        print(alpha_keys)
+    colors = dict(zip(alpha_keys, color_vals[:len(alphas)]))
+    print(colors)
 
     print("Plotting metrics...")
-    for key in alg_keys:
-        metric = metrics[key]
-        this_color = colors[key]
-        pyplot.scatter(metric['k'], metric['recall'],    label='%s: $R$'%key,     marker='s',   color=this_color)
-        pyplot.scatter(metric['k'], metric['precision'], label='%s: $P$'%key,     marker = 'p', color=this_color)
-        pyplot.scatter(metric['k'], metric['fmeasure'],  label='%s: $F_1$'%key, marker = 'x', color=this_color)
+    for alpha in alphas:
+        metric = metrics["%.3f" % alpha]
+        this_color = colors["%.3f" % alpha]
+        pyplot.scatter(metric['k'], metric['recall'],    label='%.2f: $R$'%alpha,     marker='s',   color=this_color, alpha=.5)
+        pyplot.scatter(metric['k'], metric['precision'], label='%.2f: $P$'%alpha,     marker = 'p', color=this_color, alpha=.5)
+        pyplot.scatter(metric['k'], metric['fmeasure'],  label='%.2f: $F_1$'%alpha,   marker = 'x', color=this_color, alpha=.5)
     axes = pyplot.gca()
+    print("len metrics", len(metrics))
     metric = metrics[list(metrics)[0]]
     axes.set_xlim([numpy.min(metric['k']) - 1, numpy.max(metric['k']) + 1])
     axes.set_ylim(0, 1.05)
     pyplot.xticks(numpy.arange(numpy.min(metric['k']) - 1, numpy.max(metric['k']) + 1))
     pyplot.yticks(numpy.arange(0, 1.04, .05))
-    axes.set_title('%s Precision, Recall, and $F$-Measure at $\\alpha=$ %0.2f' % (species, alpha))
+    axes.set_title('%s Precision, Recall, and $F$-Measure at $\\alpha=$ %s' % (species, str(numpy.around(alphas, decimals=2))))
     pyplot.ylabel('Accuracy ')
     pyplot.xlabel('$k$')
-    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=4)
+    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=len(alphas))
 
     print("Saving as %s..." % filename)
     pyplot.savefig(filename, bbox_extra_artists=(legend,), bbox_inches='tight');
     pyplot.close()
 
-def plot_precision_v_recall(species, alpha, metrics, filename):
+def plot_precision_v_recall(species, alphas, metrics, filename):
+    alpha_keys = []
+    for alpha in alphas:
+        alpha_keys.append("%.3f" % alpha)
+    colors = dict(zip(alpha_keys, color_vals[:len(alphas)]))
 
     print("Plotting p vs r...")
-    for key in alg_keys:
-        metric = metrics[key]
-        this_color = colors[key]
-        pyplot.scatter(metric['recall'], metric['precision'], label='%s' % key, marker='o', edgecolors=this_color, facecolors='none', s=80)
+    for alpha in alphas:
+        metric = metrics["%.3f" % alpha]
+        this_color = colors["%.3f" % alpha]
+        pyplot.scatter(metric['recall'], metric['precision'], label='%1.2f' % alpha, marker='o', edgecolors=this_color, facecolors='none', s=80, alpha = .5)
         for label, x, y in zip(metric['k'],metric['recall'], metric['precision']):
             pyplot.annotate(str(label), xy=(x,y), xytext=(x,y), va='center', ha='center', color=this_color, size='xx-small');
 
@@ -178,10 +188,10 @@ def plot_precision_v_recall(species, alpha, metrics, filename):
     axes.set_aspect('equal')
     pyplot.xticks(numpy.arange(0, 1.05, .1))
     pyplot.yticks(numpy.arange(0, 1.05, .1))
-    axes.set_title('%s Recall vs. Precision at $\\alpha=$ %0.2f' % (species, alpha))
+    axes.set_title('%s Recall vs. Precision at $\\alpha=$ %s' % (species, str(numpy.around(alphas, decimals=2))))
     pyplot.xlabel('Recall')
     pyplot.ylabel('Precision')
-    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=2)
+    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=4)
 
     print("Saving as %s..." % filename)
     pyplot.savefig(filename, bbox_extra_artists=(legend,), bbox_inches='tight');
@@ -190,34 +200,40 @@ def plot_precision_v_recall(species, alpha, metrics, filename):
 
 
 def main():
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 4:
         print_usage("Not enough arguments!")
     species = numpy.str(sys.argv[1])
     filename= numpy.str(sys.argv[2])
     k_limit = 12
-    alpha = []
-    for i, a in sys.argv[3:]
-        alpha.append(numpy.float64(sys.argv[2]))
-    print("Reading %s" % m_name)
-    data = atpy_csv(m_name)
+    alphas = []
+    for i, a in enumerate(sys.argv[3:]):
+        alphas.append(round(numpy.float64(a), 3))
+    print("alphas",str(alphas))
+    print("Reading %s" % filename)
+    data = atpy_csv(filename)
 
     if species == 'Overall' or species == 'overall':
-        data = filter_by_keyvalues(m_data, 'alpha', alph)
+        data = filter_by_keyvalues(data, 'alpha', alphas)
 
 
-    metr = []
-    print("Calculating %s at %.2f" % ('mean', alpha))
-    metr = calc_metrics(data, k_limit, alpha, species)
+    metrs = []
+    for alpha in alphas:
+        print("Calculating %s at %.2f" % ('mean', alpha))
+        metrs.append(calc_metrics(data, k_limit, alpha, species))
+        print(metrs[-1])
 
-    print(metr)
+    alpha_keys = []
+    for alpha in alphas:
+        alpha_keys.append("%.3f" % alpha)
 
-    all_metrics = dict(zip(['mean', 'winner', 'union', 'intersection', ], [m_metr, w_metr, u_metr, i_metr]))
+    all_metrics = dict(zip(alpha_keys, metrs))
 
-    metr_fname = "./figures/%s-ALL-metrics-%d-%1.3f.pdf" % (species, k_limit, alpha)
-    plot_metrics_per_k(species, alpha, all_metrics, metr_fname)
+    metr_fname = "./figures/%s-ALL-metrics-%d-%s.pdf" % (species, k_limit, str(numpy.around(alphas, decimals=2)))
+    plot_metrics_per_k(species, alphas, all_metrics, metr_fname)
 
-    pvr_fname = "./figures/%s-ALL-pvr-%d-%1.3f.pdf" % (species, k_limit, alpha)
-    plot_precision_v_recall(species, alpha, all_metrics, pvr_fname)
+    pvr_fname = "./figures/%s-ALL-pvr-%d-%s.pdf" % (species, k_limit, str(numpy.around(alphas, decimals=2)))
+    print(pvr_fname)
+    plot_precision_v_recall(species, alphas, all_metrics, pvr_fname)
 
     return 0
     
