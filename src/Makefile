@@ -56,6 +56,10 @@ set: set/ set.res $(LIB)ResultsPrinter.class
 intersection: intersection/ intersection.res $(LIB)ResultsPrinter.class
 	java -cp $(CP) ResultsPrinter -f intersection.res -m -o intersection.csv
 
+#Statistics
+stats: $(LIB)Driver.class tree.phyl
+	java -cp $(CP) Driver -z -f tree.phyl
+
 #Result Files
 results: mean.res winner.res set.res intersection.res 
 
