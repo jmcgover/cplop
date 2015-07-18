@@ -143,16 +143,16 @@ def plot_precision_v_recall(metrics, species, filename):
 
     alpha = numpy.unique(metrics['alpha'])
 
-    pyplot.scatter(metrics['precision'], metrics['recall'],    label='precision vs. recall',    marker='x',   color='black')
+    pyplot.scatter(metrics['recall'], metrics['precision'],    label='$R$ vs. $P$',    marker='x',   color='black')
     axes = pyplot.gca()
     axes.set_xlim(0, 1.05)
     axes.set_ylim(0, 1.05)
     axes.set_aspect('equal')
     pyplot.xticks(numpy.arange(0, 1.05, .1))
     pyplot.yticks(numpy.arange(0, 1.05, .1))
-    axes.set_title('%s Precision vs. Recall at $\\alpha=$ %0.2f' % (species, alpha))
-    pyplot.ylabel('Recall')
-    pyplot.xlabel('Precision')
+    axes.set_title('%s Recall vs. Precision at $\\alpha=$ %0.2f' % (species, alpha))
+    pyplot.xlabel('Recall')
+    pyplot.ylabel('Precision')
     legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1))
 
     middle = len(metrics['k']) / 2
@@ -160,18 +160,18 @@ def plot_precision_v_recall(metrics, species, filename):
 
 
     first = metrics[0]
-    f_x = first['precision']
-    f_y = first['recall']
+    f_x = first['recall']
+    f_y = first['precision']
     f_a_y = f_y/2 if f_y > abs(1-f_y)/2 else abs(1+f_y)/2
     last = metrics[-1]
-    l_x = last['precision']
-    l_y = last['recall']
+    l_x = last['recall']
+    l_y = last['precision']
     l_a_y = l_y/2 if l_y > abs(1-l_y)/2 else abs(1+l_y)/2
 
     middle_ndx = numpy.int32(len(metrics['k']) / 2 - 1)
     middle = metrics[middle_ndx]
-    m_x = middle['precision']
-    m_y = middle['recall']
+    m_x = middle['recall']
+    m_y = middle['precision']
     m_a_y = m_y/2 if m_y > abs(1-m_y) else abs(1+m_y)/2
 
     arrow = dict(arrowstyle = '->', connectionstyle = 'arc3,rad=0')
