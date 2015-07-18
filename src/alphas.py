@@ -137,7 +137,7 @@ matplotlib.rcParams.update(params);
 gold='#FADA5E'
 green='#0A7951'
 color_vals = ['purple', 'orange', 'red', green, 'blue', 'black', 'magenta', 'red']
-def plot_metrics_per_k(species, alphas, metrics, filename):
+def plot_metrics_per_k(species, alphas, metrics, leg_title, filename):
     alpha_keys = []
     for alpha in alphas:
         alpha_keys.append("%.3f" % alpha)
@@ -162,13 +162,13 @@ def plot_metrics_per_k(species, alphas, metrics, filename):
     axes.set_title('%s Precision, Recall, and $F$-Measure at $\\alpha=$ %s' % (species, str(numpy.around(alphas, decimals=2))))
     pyplot.ylabel('Accuracy ')
     pyplot.xlabel('$k$')
-    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=len(alphas))
+    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), title=leg_title, ncol=len(alphas))
 
     print("Saving as %s..." % filename)
     pyplot.savefig(filename, bbox_extra_artists=(legend,), bbox_inches='tight');
     pyplot.close()
 
-def plot_precision_v_recall(species, alphas, metrics, filename):
+def plot_precision_v_recall(species, alphas, metrics, leg_title, filename):
     alpha_keys = []
     for alpha in alphas:
         alpha_keys.append("%.3f" % alpha)
@@ -191,7 +191,7 @@ def plot_precision_v_recall(species, alphas, metrics, filename):
     axes.set_title('%s Recall vs. Precision at $\\alpha=$ %s' % (species, str(numpy.around(alphas, decimals=2))))
     pyplot.xlabel('Recall')
     pyplot.ylabel('Precision')
-    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=4)
+    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), title=leg_title, ncol=4)
 
     print("Saving as %s..." % filename)
     pyplot.savefig(filename, bbox_extra_artists=(legend,), bbox_inches='tight');
@@ -229,11 +229,11 @@ def main():
     all_metrics = dict(zip(alpha_keys, metrs))
 
     metr_fname = "./figures/%s-ALL-metrics-%d-%s.pdf" % (species, k_limit, str(numpy.around(alphas, decimals=2)))
-    plot_metrics_per_k(species, alphas, all_metrics, metr_fname)
+    plot_metrics_per_k(species, alphas, all_metrics, 'Algorithm: ' + filename.split('.')[0], metr_fname)
 
     pvr_fname = "./figures/%s-ALL-pvr-%d-%s.pdf" % (species, k_limit, str(numpy.around(alphas, decimals=2)))
     print(pvr_fname)
-    plot_precision_v_recall(species, alphas, all_metrics, pvr_fname)
+    plot_precision_v_recall(species, alphas, all_metrics, 'Algorithm: ' + filename.split('.')[0], pvr_fname)
 
     return 0
     
