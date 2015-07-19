@@ -28,17 +28,14 @@ def filter_by_keyvalue(data, key, value):
             new_data.add_row(d)
     return new_data
 
-def filter_by_keyvalue(data, key, values):
-    print("Filtering by %s == %s" % (key, str(value)))
+def filter_by_keyvalues(data, key, values):
+    print("Filtering by %s == %s" % (key, str(values)))
     new_data = Table(data[0:0])
     for d in data:
-        keep_it = False
         for v in values:
-            keep_it  = keep_it and data[key] == v
-            if not keep_it:
+            if d[key] == v:
+                new_data.add_row(d)
                 break
-        if keep_it:
-            new_data.add_row(d)
     return new_data
 
 def get_species_names(data):
@@ -211,20 +208,48 @@ def main():
     print("alphas",str(alphas))
     print("Reading %s" % filename)
     data = atpy_csv(filename)
+    print(data)
 
+    m_name = 'mean.csv'
+    w_name = 'winner.csv'
+    u_name = 'union.csv'
+    i_name = 'intersection.csv'
+
+    print("Reading %s" % m_name)
+    m_data = atpy_csv(m_name)
+    print("Reading %s" % w_name)
+    w_data = atpy_csv(w_name)
+    print("Reading %s" % u_name)
+    u_data = atpy_csv(u_name)
+    print("Reading %s" % i_name)
+    i_data = atpy_csv(i_name)
     if species == 'Overall' or species == 'overall':
-        data = filter_by_keyvalues(data, 'alpha', alphas)
+        m_data = filter_by_keyvalues(m_data, 'alpha', alphas)
+        w_data = filter_by_keyvalues(w_data, 'alpha', alphas)
+        u_data = filter_by_keyvalues(u_data, 'alpha', alphas)
+        i_data = filter_by_keyvalues(i_data, 'alpha', alphas)
 
-
-    metrs = []
-    for alpha in alphas:
-        print("Calculating %s at %.2f" % ('mean', alpha))
-        metrs.append(calc_metrics(data, k_limit, alpha, species))
-        print(metrs[-1])
+    print("Calculating %s" % 'mean')
+    m_metrs = []
+    print("Calculating %s" % 'winner')
+    w_metrs = []
+    print("Calculating %s" % 'union')
+    u_metrs = []
+    print("Calculating %s" % 'intersection')
+    i_metrs = []
 
     alpha_keys = []
     for alpha in alphas:
         alpha_keys.append("%.3f" % alpha)
+
+    metrs = []
+    for alpha in alphas:
+        print("Calculating %.2f" %  alpha)
+        m_metr.append(calc_metrics(m_data, k_limit, alpha, species))
+        w_metr.append(calc_metrics(w_data, k_limit, alpha, species))
+        u_metr.append(calc_metrics(u_data, k_limit, alpha, species))
+        i_metr.append(calc_metrics(i_data, k_limit, alpha, species))
+
 
     all_metrics = dict(zip(alpha_keys, metrs))
 
