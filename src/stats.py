@@ -14,7 +14,7 @@ def print_usage(msg=None):
     if msg:
         print(msg)
         exit_val = 22
-    print("usage: " + sys.argv[0] + " <filename> <species> <k limit> <alpha>")
+    print("usage: " + sys.argv[0] + " <k> <alpha> <species> ...")
     sys.exit(exit_val)
 
 def atpy_csv(filename):
@@ -39,6 +39,7 @@ def calc_f_measure(recall, precision):
     return 2 / (1 / recall + 1 / precision)
 
 def calc_recall(data, k, alpha, species):
+    print("%s recall" % species)
     correct = 0
     total = 0
     for d in data:
@@ -50,6 +51,7 @@ def calc_recall(data, k, alpha, species):
     return None
 
 def calc_precision(data, k, alpha, species):
+    print("%s precision" % species)
     correct = -1
     total = -1
     for d in data:
@@ -63,17 +65,33 @@ def calc_precision(data, k, alpha, species):
     return None
 
 def overall_recall(data, k, alpha):
+    print("overall recall")
     correct = 0
     total = 0
+    isols = None
+    species_seen = False
+    overall_seen = False
     for species in get_species_names(data):
+        species_seen = False
         for d in data:
-            if d['k'] == k and d['alpha'] == alpha and d['species'] == species: 
-                correct += d[species]
-                total   += d['total']
-                break
-    return round(correct / total, 3)
+            if d['k'] == k and d['alpha'] == alpha:
+                if d['species'] == species: 
+#                    print(d['k'], d['alpha'], d['species'], d['attempts'])
+                    correct += d[species]
+                    total   += d['total']
+                    if overall_seen:
+                        break
+                    species_seen = True
+                if not overall_seen and d['species'] == 'Overall':
+                    overall_seen = True
+#                    print(d['k'], d['alpha'], d['species'], d['attempts'])
+                    isols   = d['attempts']
+                    if species_seen:
+                        break
+    return (correct, total, isols)
 
 def overall_precision(data, k, alpha):
+    print("overall precision")
     total = 0
     correct = 0
     for species in get_species_names(data):
@@ -81,6 +99,7 @@ def overall_precision(data, k, alpha):
         thisCorrect = -1
         for d in data:
             if d['k'] == k and d['alpha'] == alpha:
+#                print(species + ":",d['k'], d['alpha'], d['species'], d[species], d['attempts'])
                 if d['species'] == species:
                     thisCorrect = d[species]
                 if d['species'] == 'Overall':
@@ -89,7 +108,7 @@ def overall_precision(data, k, alpha):
                     total += thisTotal
                     correct += thisCorrect
                     break
-    return round(correct / total, 3)
+    return (correct, total)
 
 def calc_metrics(data, k_limit, alpha, species):
     name_len = len(species)
@@ -97,17 +116,13 @@ def calc_metrics(data, k_limit, alpha, species):
     measured_k = numpy.unique(data['k'])
     if species == 'overall' or species == 'Overall':
         for m_k in measured_k:
-            print("k", m_k)
             if m_k == k_limit:
-                print("recall..")
                 r_corr, r_tot, isols = overall_recall(data, m_k, alpha)
                 recall = round(r_corr / r_tot, 3)
-                print("precision..")
-                p_corr, p_tot = overall_precision(data, m_k, alpha)
-                precision = round(p_corr / p_tot, 3)
-                fmeasure =  calc_f_measure(recall, precision)
-                print("adding..")
-                metrics.add_row((species, m_k, isols, alpha, recall, precision, fmeasure))
+#                p_corr, p_tot = overall_precision(data, m_k, alpha)
+#                precision = round(p_corr / p_tot, 3)
+#                fmeasure =  calc_f_measure(recall, precision)
+                metrics.add_row((species, m_k, isols, alpha, recall, recall, recall))
     else:
         for m_k in measured_k:
             if m_k == k_limit:
@@ -120,12 +135,12 @@ def calc_metrics(data, k_limit, alpha, species):
     return metrics
 
 def print_upper_header():
-    print("%s,%s,%s,%s,%s,%s,%s,%s" % ('Species','Num','Meanwise','Meanwise','Meanwise','Winner','Winner','Winner'))
-    print("%s,%s,%s,%s,%s,%s,%s,%s" % ('Species','Num','P','R','$F_1$','P','R','$F_1$'))
+    print("%s,%s,%s,%s,%s,%s,%s,%s" % ('$|\spec{}|$','$|\isol{}s|$','Meanwise','Meanwise','Meanwise','Winner','Winner','Winner'))
+    print("%s,%s,%s,%s,%s,%s,%s,%s" % ('$|\spec{}|$','$|\isol{}s|$','$P$','$R$','$F_1$','$P$','$R$','$F_1$'))
 
 def print_lower_header():
-    print("%s,%s,%s,%s,%s,%s,%s,%s" % ('Species','Num','Union','Union','Union','Intersection','Intersection','Intersection'))
-    print("%s,%s,%s,%s,%s,%s,%s,%s" % ('Species','Num','P','R','$F_1$','P','R','$F_1$'))
+    print("%s,%s,%s,%s,%s,%s,%s,%s" % ('$|\spec{}|$','$|\isol{}s|$','Union','Union','Union','Intersection','Intersection','Intersection'))
+    print("%s,%s,%s,%s,%s,%s,%s,%s" % ('$|\spec{}|$','$|\isol{}s|$','$P$','$R$','$F_1$','$P$','$R$','$F_1$'))
 
 def print_row(s,a,b):
     print("%s,%d,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f" % (s,a['num'],a['precision'],a ['recall'],a['fmeasure'],b['precision'],b['recall'],b['fmeasure']))
@@ -144,7 +159,7 @@ def main():
 
     m_fname = 'mean.csv'
     w_fname = 'winner.csv'
-    u_fname = 'set.csv'
+    u_fname = 'union.csv'
     i_fname = 'intersection.csv'
 
     print("Parsing %s" % m_fname)
@@ -161,13 +176,13 @@ def main():
     u_metrics = []
     i_metrics = []
     for i, s in enumerate(species):
-        print("Metrics for %d, %.3f  %s" % (k_limit, alpha, s))
+        print("Metrics for %d, %.3f %s %s" % (k_limit, alpha, "mean", s))
         m_metrics.append(calc_metrics(m_data, k_limit, alpha, s))
-        print("Metrics for %d, %.3f  %s" % (k_limit, alpha, s))
+        print("Metrics for %d, %.3f %s %s" % (k_limit, alpha, "winner", s))
         w_metrics.append(calc_metrics(w_data, k_limit, alpha, s))
-        print("Metrics for  %d,%.3f  %s" % (k_limit, alpha, s))
+        print("Metrics for %d, %.3f %s %s" % (k_limit, alpha, "union", s))
         u_metrics.append(calc_metrics(u_data, k_limit, alpha, s))
-        print("Metrics for %d, %.3f  %s" % (k_limit, alpha, s))
+        print("Metrics for %d, %.3f %s %s" % (k_limit, alpha, "intersect", s))
         i_metrics.append(calc_metrics(i_data, k_limit, alpha, s))
 
     print_upper_header()

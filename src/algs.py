@@ -185,7 +185,7 @@ def main():
 
     m_name = 'mean.csv'
     w_name = 'winner.csv'
-    u_name = 'set.csv'
+    u_name = 'union.csv'
     i_name = 'intersection.csv'
 
     print("Reading %s" % m_name)
@@ -219,10 +219,10 @@ def main():
 
     all_metrics = dict(zip(['mean', 'winner', 'union', 'intersection', ], [m_metr, w_metr, u_metr, i_metr]))
 
-    metr_fname = "./figures/%s-ALL-metrics-%d-%1.3f.pdf" % (species, k_limit, alpha)
+    metr_fname = "./figures/%s-ALL-metrics-%d-%s.pdf" % (species, k_limit, str("%.3f" % alpha).replace('.','_'))
     plot_metrics_per_k(species, alpha, all_metrics, metr_fname)
 
-    pvr_fname = "./figures/%s-ALL-pvr-%d-%1.3f.pdf" % (species, k_limit, alpha)
+    pvr_fname = "./figures/%s-ALL-pvr-%d-%s.pdf" % (species, k_limit, str("%.3f" % alpha).replace('.','_'))
     plot_precision_v_recall(species, alpha, all_metrics, pvr_fname)
 
     return 0
