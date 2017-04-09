@@ -3,11 +3,13 @@
 from astropy.io import ascii
 from astropy.table import Table, Column
 import matplotlib
+matplotlib.use('Agg')
 from matplotlib import pyplot
 import numpy
 import pandas
 import sys
 from prettytable import PrettyTable
+
 
 def print_usage(msg=None):
     exit_val = 0
@@ -125,8 +127,61 @@ gold='#FADA5E'
 green='#0A7951'
 alg_keys = ['mean','winner','union', 'intersection']
 colors = dict(zip(alg_keys,['purple', 'orange', 'red', green]))
-def plot_metrics_per_k(species, alpha, metrics, filename):
+def plot_accuracy_per_k_broken(species, alpha, metrics, filename, lower_cut, upper_cut):
+    print("Plotting accuracy...")
+    f,(ax,ax2) = pyplot.subplots(2,1,sharex=True)
+    for key in alg_keys:
+        metric = metrics[key]
+        this_color = colors[key]
+        #pyplot.scatter(metric['k'], metric['recall'],    label='%s'%key,     marker='s',   color=this_color)
+        ax.scatter(metric['k'], metric['recall'],    label='%s'%key,     marker='s',   color=this_color)
+        ax2.scatter(metric['k'], metric['recall'],    label='%s'%key,     marker='s',   color=this_color)
+    #axes = pyplot.gca()
+    metric = metrics[list(metrics)[0]]
+    ax.set_xlim([numpy.min(metric['k']) - 1, numpy.max(metric['k']) + 1])
+    ax.set_ylim(0.5, 1.05)
+    ax2.set_ylim(0, 0.1)
+    # hide the spines between ax and ax2
+    ax.spines['bottom'].set_visible(False)
+    ax2.spines['top'].set_visible(False)
+    ax.xaxis.tick_top()
+    ax.tick_params(labeltop='off') # don't put tick labels at the top
+    ax2.xaxis.tick_bottom()
 
+    pyplot.xticks(numpy.arange(numpy.min(metric['k']) - 1, numpy.max(metric['k']) + 1))
+    #pyplot.yticks(numpy.arange(0, 1.04, .05))
+    ax.set_title('%s Accuracy at $\\alpha=$ %0.2f' % (species, alpha))
+    pyplot.ylabel('Accuracy ')
+    pyplot.xlabel('$k$')
+    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=4)
+
+
+    print("Saving as %s..." % filename)
+    pyplot.savefig(filename, bbox_extra_artists=(legend,));
+    pyplot.close()
+
+def plot_accuracy_per_k(species, alpha, metrics, filename):
+    print("Plotting accuracy...")
+    for key in alg_keys:
+        metric = metrics[key]
+        this_color = colors[key]
+        pyplot.scatter(metric['k'], metric['recall'],    label='%s'%key,     marker='s',   color=this_color)
+    axes = pyplot.gca()
+    metric = metrics[list(metrics)[0]]
+    axes.set_xlim([numpy.min(metric['k']) - 1, numpy.max(metric['k']) + 1])
+    axes.set_ylim(0, 1.05)
+    pyplot.xticks(numpy.arange(numpy.min(metric['k']) - 1, numpy.max(metric['k']) + 1))
+    pyplot.yticks(numpy.arange(0, 1.04, .05))
+    axes.set_title('%s Accuracy at $\\alpha=$ %0.2f' % (species, alpha))
+    pyplot.ylabel('Accuracy ')
+    pyplot.xlabel('$k$')
+    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=4)
+
+    print("Saving as %s..." % filename)
+    pyplot.savefig(filename, bbox_extra_artists=(legend,), bbox_inches='tight');
+    pyplot.close()
+
+def plot_metrics_per_k(species, alpha, metrics, filename):
     print("Plotting metrics...")
     for key in alg_keys:
         metric = metrics[key]
@@ -182,6 +237,7 @@ def main():
     species = numpy.str(sys.argv[1])
     alpha   = numpy.float64(sys.argv[2])
     k_limit = 12
+    figures_folder = "./figures_broken"
 
     m_name = 'mean.csv'
     w_name = 'winner.csv'
@@ -219,11 +275,14 @@ def main():
 
     all_metrics = dict(zip(['mean', 'winner', 'union', 'intersection', ], [m_metr, w_metr, u_metr, i_metr]))
 
-    metr_fname = "./figures/%s-ALL-metrics-%d-%s.pdf" % (species, k_limit, str("%.3f" % alpha).replace('.','_'))
-    plot_metrics_per_k(species, alpha, all_metrics, metr_fname)
-
-    pvr_fname = "./figures/%s-ALL-pvr-%d-%s.pdf" % (species, k_limit, str("%.3f" % alpha).replace('.','_'))
-    plot_precision_v_recall(species, alpha, all_metrics, pvr_fname)
+    metr_fname = "%s/%s-ALL-metrics-%d-%s.pdf" % (figures_folder, species, k_limit, str("%.3f" % alpha).replace('.','_'))
+    if species.lower() == "overall":
+        #plot_accuracy_per_k(species, alpha, all_metrics, metr_fname)
+        plot_accuracy_per_k_broken(species, alpha, all_metrics, metr_fname, .1, .5)
+    else :
+        plot_metrics_per_k(species, alpha, all_metrics, metr_fname)
+        pvr_fname = "%s/%s-ALL-pvr-%d-%s.pdf" % (figures_folder, species, k_limit, str("%.3f" % alpha).replace('.','_'))
+        plot_precision_v_recall(species, alpha, all_metrics, pvr_fname)
 
     return 0
     
