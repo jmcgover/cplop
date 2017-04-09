@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Setwise extends Classifier<Isolate, Phylogeny, Species> {
    ArrayList<ArrayList<ListEntry<Isolate, Double>>> neighborsLists;
@@ -33,15 +34,22 @@ public class Setwise extends Classifier<Isolate, Phylogeny, Species> {
          /* Sort */
          Collections.sort(neighbors);
 
+         if (!neighbors.get(0).getData().equals(unknown)) {
+             neighbors.add(0, new ListEntry<Isolate, Double>(
+                         new Isolate("IGNORE SPECIES", "IGNORE HOST", "IGNORE ISOLATE"), 1.0, 0));
+//            throw new IllegalStateException(
+//                  String.format("The unknown (%s) is not the zeroth element (%s)", unknown, neighbors.get(0)));
+         }
+
          /*Mark Position*/
          int i = 0;
          for (ListEntry<Isolate, Double> n : neighbors) {
             n.setPosition(i++);
          }
-         if (!neighbors.get(0).getData().equals(unknown)) {
-            throw new IllegalStateException(
-                  String.format("The unknown (%s) is not the zeroth element (%s)", unknown, neighbors.get(0)));
-         }
+//         if (!neighbors.get(0).getData().equals(unknown)) {
+//            throw new IllegalStateException(
+//                  String.format("The unknown (%s) is not the zeroth element (%s)", unknown, neighbors.get(0)));
+//         }
 
          /*Add to all neighbors.*/
          neighborsLists.add(neighbors);
@@ -67,6 +75,23 @@ public class Setwise extends Classifier<Isolate, Phylogeny, Species> {
       }
       counter = new SetCounter<Species, Isolate, Double>();
       result = counter.findMostPlural(allNearest);
+
+      // Print the relevant list
+      PrintStream out = System.err;
+      try {
+          out = new PrintStream(String.format(
+                      "results/union/avila_union_%d_%.3f_%s.csv", k, alpha, unknown));
+      } catch (Exception e) {
+          throw new RuntimeException(e);
+      }
+      List<ListEntry<Isolate, Double>> sortedList =
+          new ArrayList<ListEntry<Isolate, Double>>(allNearest);
+      Collections.sort(sortedList);
+      out.printf("k,alpha,unknownId,classification,pearson,isoId,species\n");
+      for (ListEntry<Isolate, Double> entry : sortedList) {
+          out.printf("%d,%.3f,%s,%s,%.3f,%s,%s\n",
+                  k, alpha, unknown, result, entry.getValue(), entry.getData(), entry.getData().getCommonName());
+      }
 
       if (result != null) {
          return result.getData();
