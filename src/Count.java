@@ -17,12 +17,15 @@ public class Count<S> implements Comparable<Count<S>>{
    public S getData() {
       return this.data;
    }
+   public int getCount() {
+      return this.count;
+   }
    public int hashCode() {
       return this.data.hashCode();
    }
    public int compareTo(Count<S> other) {
       if (this.count == other.count) {
-         return -1 * this.average.compareTo(other.average);
+         return this.average.compareTo(other.average);
       }
       return -1* (this.count - other.count);
    }
