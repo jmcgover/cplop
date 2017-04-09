@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Winner extends Classifier<Isolate, Phylogeny, Species> {
    ArrayList<ArrayList<ListEntry<Isolate, Double>>> neighborsLists;
@@ -18,7 +19,6 @@ public class Winner extends Classifier<Isolate, Phylogeny, Species> {
       similarities   = new PearsonIsolate();
       neighborsLists = new ArrayList<ArrayList<ListEntry<Isolate, Double>>>();
 
-      
       for (SimilarityMetric<Isolate, Double> sim : similarities.getSimilarities()) {
          neighbors = new ArrayList<ListEntry<Isolate, Double>>(allIsolates.size());
          for (Isolate i : library.getAllIsolates().values()) {
@@ -33,14 +33,16 @@ public class Winner extends Classifier<Isolate, Phylogeny, Species> {
          /* Sort */
          Collections.sort(neighbors);
 
+         if (!neighbors.get(0).getData().equals(unknown)) {
+             neighbors.add(0, new ListEntry<Isolate, Double>(
+                         new Isolate("IGNORE SPECIES", "IGNORE HOST", "IGNORE ISOLATE"), 1.0, 0));
+//            throw new IllegalStateException(
+//                  String.format("The unknown (%s) is not the zeroth element (%s)", unknown, neighbors.get(0)));
+         }
          /*Mark Position*/
          int i = 0;
          for (ListEntry<Isolate, Double> n : neighbors) {
             n.setPosition(i++);
-         }
-         if (!neighbors.get(0).getData().equals(unknown)) {
-            throw new IllegalStateException(
-                  String.format("The unknown (%s) is not the zeroth element (%s)", unknown, neighbors.get(0)));
          }
 
          /*Add to all neighbors.*/
@@ -70,6 +72,7 @@ public class Winner extends Classifier<Isolate, Phylogeny, Species> {
          }
       }
 
+      result = null;
       if (counts.size() > 0) {
          Count<Species> highestCount = counts.get(0);
          for (Count<Species> count : counts) {
@@ -77,8 +80,14 @@ public class Winner extends Classifier<Isolate, Phylogeny, Species> {
                highestCount = count;
             }
          }
-         return highestCount.getData();
+         result = highestCount;
       }
+
+      if (result != null) {
+          return result.getData();
+      }
+
+
       return null;
    }
 }
