@@ -15,6 +15,13 @@ public class SetCounter<S,I extends Classified<S>, D extends Comparable<D>> {
       if (this.counts.values().size() > 0) {
          sortedList = new ArrayList<Count<S>>(this.counts.values());
          Collections.sort(sortedList);
+         if (sortedList.get(0).getCount() == 1) {
+             for (Count<S> count : sortedList) {
+                 if (count != sortedList.get(0) && count.getCount() == sortedList.get(0).getCount()) {
+                     return null;
+                 }
+             }
+         }
          return sortedList.get(0);
       }
       return null;
