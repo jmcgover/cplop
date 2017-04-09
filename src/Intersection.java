@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Intersection extends Classifier<Isolate, Phylogeny, Species> {
    ArrayList<ArrayList<ListEntry<Isolate, Double>>> neighborsLists;
@@ -33,15 +34,22 @@ public class Intersection extends Classifier<Isolate, Phylogeny, Species> {
          /* Sort */
          Collections.sort(neighbors);
 
+         if (!neighbors.get(0).getData().equals(unknown)) {
+             neighbors.add(0, new ListEntry<Isolate, Double>(
+                         new Isolate("IGNORE SPECIES", "IGNORE HOST", "IGNORE ISOLATE"), 1.0, 0));
+//            throw new IllegalStateException(
+//                  String.format("The unknown (%s) is not the zeroth element (%s)", unknown, neighbors.get(0)));
+         }
+
          /*Mark Position*/
          int i = 0;
          for (ListEntry<Isolate, Double> n : neighbors) {
             n.setPosition(i++);
          }
-         if (!neighbors.get(0).getData().equals(unknown)) {
-            throw new IllegalStateException(
-                  String.format("The unknown (%s) is not the zeroth element (%s)", unknown, neighbors.get(0)));
-         }
+//         if (!neighbors.get(0).getData().equals(unknown)) {
+//            throw new IllegalStateException(
+//                  String.format("The unknown (%s) is not the zeroth element (%s)", unknown, neighbors.get(0)));
+//         }
 
          /*Add to all neighbors.*/
          neighborsLists.add(neighbors);
@@ -97,7 +105,6 @@ public class Intersection extends Classifier<Isolate, Phylogeny, Species> {
          k += delta;
       }
 
-      
       result = null;
       if (intersection.size() == neededSize) {
 //         System.out.printf(
@@ -110,6 +117,23 @@ public class Intersection extends Classifier<Isolate, Phylogeny, Species> {
 //         System.out.printf("
 //         (%4d)[%1.3f]{%4d}|%4d| ", 
 //         k, alpha, this.neighborsLists.get(0).size(), intersection.size());
+      }
+
+      // Print the relevant list
+      PrintStream out = System.err;
+      try {
+          out = new PrintStream(String.format(
+                      "results/intersection/avila_intersection_%d_%.3f_%s.csv", neededSize, alpha, unknown));
+      } catch (Exception e) {
+          throw new RuntimeException(e);
+      }
+      List<ListEntry<Isolate, Double>> sortedList =
+          new ArrayList<ListEntry<Isolate, Double>>(intersection);
+      Collections.sort(sortedList);
+      out.printf("k,alpha,unknownId,classification,pearson,isoId,species\n");
+      for (ListEntry<Isolate, Double> entry : sortedList) {
+          out.printf("%d,%.3f,%s,%s,%.3f,%s,%s\n",
+                  k, alpha, unknown, result, entry.getValue(), entry.getData(), entry.getData().getCommonName());
       }
 
       if (result != null) {
