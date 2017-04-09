@@ -43,7 +43,6 @@ csv: union mean winner intersection
 $(LIB)ResultsPrinter.class: $(LIB)ExperimentResult.class $(LIB)Classification.class $(LIB)SpeciesResult.class ResultsPrinter.java
 	$(JC) $(FLAGS) -cp $(CP) ResultsPrinter.java -d $(LIB)
 
-
 mean: mean/ mean.res $(LIB)ResultsPrinter.class
 	java -cp $(CP) ResultsPrinter -f mean.res -m -o mean.csv
 
@@ -74,6 +73,23 @@ union.res: tree.phyl $(LIB)Setwise.class
 
 intersection.res: tree.phyl $(LIB)Intersection.class
 	java -cp $(CP) Driver -f tree.phyl -o intersection.res -i
+
+#Classify
+ISOLS=ES-1199,ES-1200,ES-1203,ES-1206,ES-1207,ES-1208,ES-1211,ES-1215,ES-1216,ES-1217,ES-1218,ES-1219,ES-1221,ES-1225,ES-1233,ES-1234,ES-1236,ES-1240,ES-1241,ES-1242,ES-1244,ES-1247,ES-1249,ES-1208,ES-1234,ES-1236,ES-1240,ES-1241,ES-1242,ES-1244,ES-1247,ES-1249
+
+classify: avila_union.csv avila_mean.csv avila_winner.csv avila_intersection.csv
+
+avila_mean.csv: tree.phyl $(LIB)Meanwise.class mean/
+	java -cp $(CP) Driver -f tree.phyl -o avila_mean.res -m -c $(ISOLS)
+
+avila_winner.csv: tree.phyl $(LIB)Winner.class winner/
+	java -cp $(CP) Driver -f tree.phyl -o avila_winner.res -w -c $(ISOLS)
+
+avila_union.csv: tree.phyl $(LIB)Setwise.class union/
+	java -cp $(CP) Driver -f tree.phyl -o avila_union.res -s -c $(ISOLS)
+
+avila_intersection.csv: tree.phyl $(LIB)Intersection.class intersection/
+	java -cp $(CP) Driver -f tree.phyl -o avila_intersection.res -i -c $(ISOLS)
 
 $(LIB)%.class: %.java
 	$(JC) $(FLAGS) -cp $(CP) $^ -d $(LIB)
