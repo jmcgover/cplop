@@ -38,6 +38,13 @@ public class Meanwise extends Classifier<Isolate, Phylogeny, Species> {
       /* Sort */
       Collections.sort(neighbors);
 
+         if (!neighbors.get(0).getData().equals(unknown)) {
+             neighbors.add(0, new ListEntry<Isolate, Double>(
+                         new Isolate("IGNORE SPECIES", "IGNORE HOST", "IGNORE ISOLATE"), 1.0, 0));
+//            throw new IllegalStateException(
+//                  String.format("The unknown (%s) is not the zeroth element (%s)", unknown, neighbors.get(0)));
+         }
+
       /*Mark Position*/
       int i = 0;
       for (ListEntry<Isolate, Double> n : neighbors) {
@@ -45,12 +52,12 @@ public class Meanwise extends Classifier<Isolate, Phylogeny, Species> {
       }
       /*We shouldn't ever have a state where the first in the list isn't the
        * unknown, since we're comparing against the whole databse.*/
-      if (!neighbors.get(0).getData().equals(unknown)) {
-         throw new IllegalStateException(
-               String.format("The unknown (%s) is not the zeroth element (%s)", 
-                  unknown, this.neighbors.get(0))
-               );
-      }
+//      if (!neighbors.get(0).getData().equals(unknown)) {
+//         throw new IllegalStateException(
+//               String.format("The unknown (%s) is not the zeroth element (%s)", 
+//                  unknown, this.neighbors.get(0))
+//               );
+//      }
 
       return neighbors;
    }
