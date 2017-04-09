@@ -55,7 +55,7 @@ def calc_precision(data, k, alpha, species):
         if d['k'] == k and d['alpha'] == alpha:
             if d['species'] == species:
                 correct = d[species]
-            if d['species'] == 'Overall':
+            if d['species'].lower() == 'overall':
                 total = d[species]
             if total >=0 and correct >= 0:
                 return round(correct / total, 3)
@@ -82,7 +82,7 @@ def overall_precision(data, k, alpha):
             if d['k'] == k and d['alpha'] == alpha:
                 if d['species'] == species:
                     thisCorrect = d[species]
-                if d['species'] == 'Overall':
+                if d['species'].lower() == 'overall':
                     thisTotal = d[species]
                 if thisTotal >=0 and thisCorrect >= 0:
                     total += thisTotal
@@ -94,7 +94,7 @@ def calc_metrics(data, k_limit, alpha, species):
     name_len = len(species)
     metrics = Table(names = ('species', 'k', 'alpha', 'recall', 'precision', 'fmeasure'), dtype = ('S' + str(name_len), 'i32', 'f64', 'f64', 'f64', 'f64'))
     measured_k = numpy.unique(data['k'])
-    if species == 'overall' or species == 'Overall':
+    if species.lower() == 'overall':
         for m_k in measured_k:
             print("k", m_k)
             if m_k <= k_limit:
@@ -121,6 +121,21 @@ params = {'text.usetex' : True,
           'legend.loc' : 'best'
           }
 matplotlib.rcParams.update(params);
+def plot_accuracy_per_k(metrics, species, filename):
+    alpha = numpy.unique(metrics['alpha'])
+
+    pyplot.scatter(metrics['k'], metrics['recall'],  label='accuracy',  marker = 'x', color='black')
+    axes = pyplot.gca()
+    axes.set_xlim([numpy.min(metrics['k']) - 1, numpy.max(metrics['k']) + 1])
+    axes.set_ylim(0, 1.05)
+    pyplot.xticks(numpy.arange(numpy.min(metrics['k']) - 1, numpy.max(metrics['k']) + 1))
+    pyplot.yticks(numpy.arange(0, 1.04, .05))
+    axes.set_title('%s Accuracy at $\\alpha=$ %0.2f' % (species, alpha))
+    pyplot.ylabel('Accuracy ')
+    pyplot.xlabel('$k$')
+    legend = pyplot.legend(loc=9, bbox_to_anchor=(0.5, -0.1))
+    pyplot.savefig(filename, bbox_extra_artists=(legend,), bbox_inches='tight');
+    pyplot.close()
 def plot_metrics_per_k(metrics, species, filename):
     alpha = numpy.unique(metrics['alpha'])
 
@@ -181,8 +196,6 @@ def plot_precision_v_recall(metrics, species, filename):
     pyplot.savefig(filename, bbox_extra_artists=(legend,), bbox_inches='tight');
     pyplot.close()
 
-
-
 def main():
     if len(sys.argv) < 5:
         print_usage("Not enough arguments!")
@@ -190,6 +203,7 @@ def main():
     species = numpy.str(sys.argv[2])
     k_limit = numpy.int64(sys.argv[3])
     alpha   = numpy.float64(sys.argv[4])
+    folder_name = "./figures_broken"
 
     print("Parsing " + filename + "...")
     data = atpy_csv(filename)
@@ -200,15 +214,18 @@ def main():
     print("Calculating metrics for k <= %d, alpha == %.3f and species %s" % (k_limit, alpha, species))
     metrics = calc_metrics(data, k_limit, alpha, species)
     print(metrics)
-    
-    metrics_fname = "./figures/%s-%s-metrics-%d-%1.3f.pdf" % (species, filename.replace('.',''), k_limit, alpha)
+
+    metrics_fname = "%s/%s-%s-metrics-%d-%1.3f.pdf" % (folder_name, species, filename.replace('.',''), k_limit, alpha)
     print("Saving metrics as ", metrics_fname)
-    plot_metrics_per_k(metrics, species, metrics_fname)
-    pvr_fname = "./figures/%s-%s-pvr-%d-%1.3f.pdf" % (species, filename.replace('.',''), k_limit, alpha)
-    print("Saving pvr as ", metrics_fname)
-    plot_precision_v_recall(metrics, species, pvr_fname)
+    if species.lower() == "overall":
+        plot_accuracy_per_k(metrics, species, metrics_fname)
+    else:
+        plot_metrics_per_k(metrics, species, metrics_fname)
+        pvr_fname = "./figures/%s-%s-pvr-%d-%1.3f.pdf" % (species, filename.replace('.',''), k_limit, alpha)
+        print("Saving pvr as ", metrics_fname)
+        plot_precision_v_recall(metrics, species, pvr_fname)
 
     return 0
-    
+
 if __name__ == "__main__":
     sys.exit(main())
