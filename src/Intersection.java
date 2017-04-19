@@ -13,7 +13,6 @@ public class Intersection extends Classifier<Isolate, Phylogeny, Species> {
       Similarities<Isolate, Double>                      similarities;
       ArrayList<ArrayList<ListEntry<Isolate, Double>>>   neighborsLists;
       ArrayList<ListEntry<Isolate, Double>>              neighbors;
-      Double                                             result;
 
       allIsolates    = library.getAllIsolates().values();
       similarities   = new PearsonIsolate();
@@ -23,7 +22,7 @@ public class Intersection extends Classifier<Isolate, Phylogeny, Species> {
       for (SimilarityMetric<Isolate, Double> sim : similarities.getSimilarities()) {
          neighbors = new ArrayList<ListEntry<Isolate, Double>>(allIsolates.size());
          for (Isolate i : library.getAllIsolates().values()) {
-            result = sim.similarity(unknown, i);
+            Double result = sim.similarity(unknown, i);
             if (result == null) {
                throw new IllegalStateException( String.format("%s or %s is missing %s", unknown, i, sim));
             }
@@ -130,10 +129,10 @@ public class Intersection extends Classifier<Isolate, Phylogeny, Species> {
       List<ListEntry<Isolate, Double>> sortedList =
           new ArrayList<ListEntry<Isolate, Double>>(intersection);
       Collections.sort(sortedList);
-      out.printf("k,alpha,unknownId,classification,pearson,isoId,species\n");
+      out.printf("needed size,max k,alpha,unknownId,classification(count)(average position),pearson,isoId,species\n");
       for (ListEntry<Isolate, Double> entry : sortedList) {
-          out.printf("%d,%.3f,%s,%s,%.3f,%s,%s\n",
-                  k, alpha, unknown, result, entry.getValue(), entry.getData(), entry.getData().getCommonName());
+          out.printf("%d,%d,%.3f,%s,%s,%.3f,%s,%s\n",
+                  neededSize, k, alpha, unknown, result, entry.getValue(), entry.getData(), entry.getData().getCommonName());
       }
 
       if (result != null) {
