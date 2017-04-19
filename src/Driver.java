@@ -76,22 +76,27 @@ public class Driver{
         if (method == null && statistics == false) {
             printUsage("Please specify which method you want to perform.");
         }
-        PrintStream resultOut = System.err;
+        PrintStream jsonOut = System.err;
+        PrintStream csvOut = System.err;
         try {
         if (!statistics) {
             System.err.printf("Using method ");
             switch (method) {
                 case MEAN:           System.err.printf("MEAN\n");
-                                     resultOut = new PrintStream("classify_mean.json");
+                                     jsonOut = new PrintStream("classify_mean.json");
+                                     csvOut = new PrintStream("classify_mean.csv");
                                      break;
                 case WINNER:         System.err.printf("WINNER\n");
-                                     resultOut = new PrintStream("classify_winner.json");
+                                     jsonOut = new PrintStream("classify_winner.json");
+                                     csvOut = new PrintStream("classify_winner.csv");
                                      break;
                 case SETWISE:        System.err.printf("SETWISE\n");
-                                     resultOut = new PrintStream("classify_union.json");
+                                     jsonOut = new PrintStream("classify_union.json");
+                                     csvOut = new PrintStream("classify_union.csv");
                                      break;
                 case INTERSECTION:   System.err.printf("INTERSECTION\n");
-                                     resultOut = new PrintStream("classify_intersection.json");
+                                     jsonOut = new PrintStream("classify_intersection.json");
+                                     csvOut = new PrintStream("classify_intersection.csv");
                                      break;
                 default:             System.err.printf("INVALID METHOD %s!\n", method);
                                      printUsage("Please proved a valid method.");
@@ -165,7 +170,8 @@ public class Driver{
             }
 
             Species result = null;
-            resultOut.printf("{\"results\" : [\n");
+            jsonOut.printf("{\"results\" : [\n");
+            csvOut.printf("%s,%s,%s,%s\n", "k", "alpha", "isoId", "classification");
             boolean isFirst = true;
             for (Isolate i : isolateTree.getAllIsolates().values()) {
                 switch (method) {
@@ -179,22 +185,23 @@ public class Driver{
                                          break;
                     default:             printUsage(String.format("Invalid method: %d", method));
                 }
-                //resultOut.printf("k,alpha,isoId,classification\n");
+                //jsonOut.printf("k,alpha,isoId,classification\n");
                 for (int a = 0; a < alpha.length; a++) {
                     for (int j = 0; j < k.length; j++) {
                         result = null;
                         result = classifier.classify(k[j], alpha[a]);
-                        //resultOut.printf("%d,%.3f,%s,%s\n", k[j], alpha[a], i, result);
+                        //jsonOut.printf("%d,%.3f,%s,%s\n", k[j], alpha[a], i, result);
                         if (isFirst) {
                             isFirst = false;
                         } else {
-                            resultOut.printf(",\n");
+                            jsonOut.printf(",\n");
                         }
-                        resultOut.printf("{\"k\":%d,\"alpha\" : %.3f, \"isoId\" : \"%s\", \"classification\":\"%s\"}", k[j], alpha[a], i, result);
+                        jsonOut.printf("{\"k\":%d,\"alpha\" : %.3f, \"isoId\" : \"%s\", \"classification\":\"%s\"}", k[j], alpha[a], i, result);
+                        csvOut.printf("%d,%.3f,%s,%s\n", k[j], alpha[a], i, result);
                     }
                 }
             }
-            resultOut.printf("]}\n");
+            jsonOut.printf("]}\n");
         } else {
             Species result = null;
             for (Species s : allSpecies) {
