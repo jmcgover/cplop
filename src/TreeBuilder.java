@@ -56,7 +56,7 @@ public class TreeBuilder{
         allQuery += "p.isErroneous, ";
         allQuery += "i.hostId, ";
         allQuery += "i.commonName ";
-        allQuery += "FROM pyroprints p, Histograms h, Isolates i ";
+        allQuery += "FROM Pyroprints p, Histograms h, Isolates i ";
         allQuery += "WHERE h.pyroID = p.pyroID and i.isoId = p.isoId ";
         allQuery += "GROUP BY pyroid ";
         allQuery += "ORDER BY commonName, hostId, isoId, pyroId, appliedRegion, isErroneous;";
