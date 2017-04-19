@@ -80,7 +80,7 @@ public class Setwise extends Classifier<Isolate, Phylogeny, Species> {
       PrintStream out = System.err;
       try {
           out = new PrintStream(String.format(
-                      "results/union/avila_union_%d_%.3f_%s.csv", k, alpha, unknown));
+                      "results/union/classify_union_%d_%.3f_%s.csv", k, alpha, unknown));
       } catch (Exception e) {
           throw new RuntimeException(e);
       }

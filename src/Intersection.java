@@ -123,7 +123,7 @@ public class Intersection extends Classifier<Isolate, Phylogeny, Species> {
       PrintStream out = System.err;
       try {
           out = new PrintStream(String.format(
-                      "results/intersection/avila_intersection_%d_%.3f_%s.csv", neededSize, alpha, unknown));
+                      "results/intersection/classify_intersection_%d_%.3f_%s.csv", neededSize, alpha, unknown));
       } catch (Exception e) {
           throw new RuntimeException(e);
       }

@@ -82,16 +82,16 @@ public class Driver{
             System.err.printf("Using method ");
             switch (method) {
                 case MEAN:           System.err.printf("MEAN\n");
-                                     resultOut = new PrintStream("avila_mean.json");
+                                     resultOut = new PrintStream("classify_mean.json");
                                      break;
                 case WINNER:         System.err.printf("WINNER\n");
-                                     resultOut = new PrintStream("avila_winner.json");
+                                     resultOut = new PrintStream("classify_winner.json");
                                      break;
                 case SETWISE:        System.err.printf("SETWISE\n");
-                                     resultOut = new PrintStream("avila_union.json");
+                                     resultOut = new PrintStream("classify_union.json");
                                      break;
                 case INTERSECTION:   System.err.printf("INTERSECTION\n");
-                                     resultOut = new PrintStream("avila_intersection.json");
+                                     resultOut = new PrintStream("classify_intersection.json");
                                      break;
                 default:             System.err.printf("INVALID METHOD %s!\n", method);
                                      printUsage("Please proved a valid method.");
