@@ -75,21 +75,22 @@ intersection.res: tree.phyl $(LIB)Intersection.class
 	java -cp $(CP) Driver -f tree.phyl -o intersection.res -i
 
 #Classify
-ISOLS=ES-1199,ES-1200,ES-1203,ES-1206,ES-1207,ES-1208,ES-1211,ES-1215,ES-1216,ES-1217,ES-1218,ES-1219,ES-1221,ES-1225,ES-1233,ES-1234,ES-1236,ES-1240,ES-1241,ES-1242,ES-1244,ES-1247,ES-1249,ES-1208,ES-1234,ES-1236,ES-1240,ES-1241,ES-1242,ES-1244,ES-1247,ES-1249
+#ISOLS=ES-1199,ES-1200,ES-1203,ES-1206,ES-1207,ES-1208,ES-1211,ES-1215,ES-1216,ES-1217,ES-1218,ES-1219,ES-1221,ES-1225,ES-1233,ES-1234,ES-1236,ES-1240,ES-1241,ES-1242,ES-1244,ES-1247,ES-1249,ES-1208,ES-1234,ES-1236,ES-1240,ES-1241,ES-1242,ES-1244,ES-1247,ES-1249
+ISOLS=PH-1,PH-2,PH-3,PH-4,PH-5,PH-6
 
-classify: avila_union.csv avila_mean.csv avila_winner.csv avila_intersection.csv
+classify: classify_union.csv classify_mean.csv classify_winner.csv classify_intersection.csv
 
-avila_mean.csv: tree.phyl $(LIB)Meanwise.class mean/
-	java -cp $(CP) Driver -f tree.phyl -o avila_mean.res -m -c $(ISOLS)
+classify_mean.csv: tree.phyl $(LIB)Meanwise.class mean/
+	java -cp $(CP) Driver -f tree.phyl -o classify_mean.res -m -c $(ISOLS)
 
-avila_winner.csv: tree.phyl $(LIB)Winner.class winner/
-	java -cp $(CP) Driver -f tree.phyl -o avila_winner.res -w -c $(ISOLS)
+classify_winner.csv: tree.phyl $(LIB)Winner.class winner/
+	java -cp $(CP) Driver -f tree.phyl -o classify_winner.res -w -c $(ISOLS)
 
-avila_union.csv: tree.phyl $(LIB)Setwise.class union/
-	java -cp $(CP) Driver -f tree.phyl -o avila_union.res -s -c $(ISOLS)
+classify_union.csv: tree.phyl $(LIB)Setwise.class union/
+	java -cp $(CP) Driver -f tree.phyl -o classify_union.res -s -c $(ISOLS)
 
-avila_intersection.csv: tree.phyl $(LIB)Intersection.class intersection/
-	java -cp $(CP) Driver -f tree.phyl -o avila_intersection.res -i -c $(ISOLS)
+classify_intersection.csv: tree.phyl $(LIB)Intersection.class intersection/
+	java -cp $(CP) Driver -f tree.phyl -o classify_intersection.res -i -c $(ISOLS)
 
 $(LIB)%.class: %.java
 	$(JC) $(FLAGS) -cp $(CP) $^ -d $(LIB)
