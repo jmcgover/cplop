@@ -54,7 +54,7 @@ public class ListEntry<D,R extends Comparable<R>> implements Comparable<ListEntr
       return this.data.hashCode();
    }
    public String toString(){
-      return String.format("%d:(%s)%s", this.position, this.value, this.data);
+      return String.format("%d", this.position);
    }
 }
 
