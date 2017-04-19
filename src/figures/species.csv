@@ -1,0 +1,34 @@
+Species               , Hosts                          , Isolates                       , Pyroprints
+Barn Owl              , 3                              , 5                              , 13
+Bat                   , 1                              , 37                             , 74
+Bear                  , 1                              , 6                              , 12
+Bobcat                , 1                              , 4                              , 8
+Sea Lion              , 3                              , 6                              , 12
+Cat                   , 36                             , 39                             , 91
+Chicken               , 15                             , 40                             , 82
+Cliff Sparrow         , 14                             , 28                             , 59
+Common Loon           , 2                              , 4                              , 8
+Cow                   , 427                            , 1838                           , 3772
+Coyote                , 2                              , 4                              , 8
+Deer                  , 2                              , 20                             , 40
+Dog                   , 50                             , 269                            , 573
+Elephant Seal         , 2                              , 4                              , 8
+Great Horned Owl      , 2                              , 4                              , 11
+Grey Fox              , 1                              , 4                              , 8
+Ground Squirrel       , 50                             , 196                            , 401
+Horse                 , 49                             , 51                             , 102
+Human                 , 227                            , 1590                           , 4189
+Mountain Lion         , 5                              , 32                             , 64
+Opossum               , 5                              , 12                             , 24
+Pelican               , 3                              , 8                              , 18
+Pig                   , 32                             , 66                             , 149
+Pigeon                , 107                            , 194                            , 515
+Rabbit                , 1                              , 4                              , 8
+Racoon                , 2                              , 4                              , 9
+Red Tailed Hawk       , 2                              , 5                              , 11
+Red-shoulder Hawk     , 2                              , 4                              , 11
+Sea Otter             , 3                              , 10                             , 20
+Seagull               , 31                             , 11                             , 22
+Sheep                 , 50                             , 94                             , 200
+Sparrow               , 8                              , 15                             , 30
+Wild Turkey           , 36                             , 72                             , 177
