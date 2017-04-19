@@ -1,0 +1,11 @@
+k,alpha,unknownId,classification,pearson,isoId,species
+5,0.900,PH-1,Cow(4)(3.500000),0.994,Hu-1884,Human UTI
+5,0.900,PH-1,Cow(4)(3.500000),0.985,Pp-099,Hu and Cw
+5,0.900,PH-1,Cow(4)(3.500000),0.994,Hu-1883,Human UTI
+5,0.900,PH-1,Cow(4)(3.500000),0.984,Cw-1730,Cow
+5,0.900,PH-1,Cow(4)(3.500000),0.993,Cw-1453,Cow
+5,0.900,PH-1,Cow(4)(3.500000),0.983,Ho-017,Horse
+5,0.900,PH-1,Cow(4)(3.500000),0.993,Pg-054,Pigeon
+5,0.900,PH-1,Cow(4)(3.500000),0.983,Cw-1311,Cow
+5,0.900,PH-1,Cow(4)(3.500000),0.993,Cw-707,Cow
+5,0.900,PH-1,Cow(4)(3.500000),0.983,Rt-156,Ground Squirrel

@@ -1,0 +1,289 @@
+k,alpha,isoId,classification
+1,0.000,PH-6,null
+2,0.000,PH-6,Cow
+3,0.000,PH-6,Cow
+4,0.000,PH-6,Cow
+5,0.000,PH-6,Cow
+6,0.000,PH-6,Cow
+7,0.000,PH-6,Cow
+8,0.000,PH-6,Hu
+1,0.500,PH-6,null
+2,0.500,PH-6,Cow
+3,0.500,PH-6,Cow
+4,0.500,PH-6,Cow
+5,0.500,PH-6,Cow
+6,0.500,PH-6,Cow
+7,0.500,PH-6,Cow
+8,0.500,PH-6,Hu
+1,0.900,PH-6,null
+2,0.900,PH-6,Cow
+3,0.900,PH-6,Cow
+4,0.900,PH-6,Cow
+5,0.900,PH-6,Cow
+6,0.900,PH-6,Cow
+7,0.900,PH-6,Cow
+8,0.900,PH-6,Hu
+1,0.950,PH-6,null
+2,0.950,PH-6,Cow
+3,0.950,PH-6,Cow
+4,0.950,PH-6,Cow
+5,0.950,PH-6,Cow
+6,0.950,PH-6,Cow
+7,0.950,PH-6,Cow
+8,0.950,PH-6,Hu
+1,0.980,PH-6,null
+2,0.980,PH-6,Hu
+3,0.980,PH-6,Hu
+4,0.980,PH-6,Hu
+5,0.980,PH-6,Hu
+6,0.980,PH-6,Hu
+7,0.980,PH-6,Hu
+8,0.980,PH-6,Hu
+1,0.990,PH-6,null
+2,0.990,PH-6,Hu
+3,0.990,PH-6,Hu
+4,0.990,PH-6,Hu
+5,0.990,PH-6,Hu
+6,0.990,PH-6,Hu
+7,0.990,PH-6,Hu
+8,0.990,PH-6,Hu
+1,0.000,PH-5,null
+2,0.000,PH-5,Human
+3,0.000,PH-5,Human
+4,0.000,PH-5,Cow
+5,0.000,PH-5,Cow
+6,0.000,PH-5,Cow
+7,0.000,PH-5,Cow
+8,0.000,PH-5,Cow
+1,0.500,PH-5,null
+2,0.500,PH-5,Human
+3,0.500,PH-5,Human
+4,0.500,PH-5,Cow
+5,0.500,PH-5,Cow
+6,0.500,PH-5,Cow
+7,0.500,PH-5,Cow
+8,0.500,PH-5,Cow
+1,0.900,PH-5,null
+2,0.900,PH-5,Human
+3,0.900,PH-5,Human
+4,0.900,PH-5,Cow
+5,0.900,PH-5,Cow
+6,0.900,PH-5,Cow
+7,0.900,PH-5,Cow
+8,0.900,PH-5,Cow
+1,0.950,PH-5,null
+2,0.950,PH-5,Human
+3,0.950,PH-5,Human
+4,0.950,PH-5,Cow
+5,0.950,PH-5,Cow
+6,0.950,PH-5,Cow
+7,0.950,PH-5,Cow
+8,0.950,PH-5,Cow
+1,0.980,PH-5,null
+2,0.980,PH-5,Human
+3,0.980,PH-5,Human
+4,0.980,PH-5,Cow
+5,0.980,PH-5,Cow
+6,0.980,PH-5,Cow
+7,0.980,PH-5,Cow
+8,0.980,PH-5,Cow
+1,0.990,PH-5,null
+2,0.990,PH-5,Human
+3,0.990,PH-5,Human
+4,0.990,PH-5,Human
+5,0.990,PH-5,Human
+6,0.990,PH-5,Human
+7,0.990,PH-5,Human
+8,0.990,PH-5,Human
+1,0.000,PH-2,null
+2,0.000,PH-2,Human UTI
+3,0.000,PH-2,Human
+4,0.000,PH-2,Human
+5,0.000,PH-2,Hu and Cw
+6,0.000,PH-2,Ground Squirrel
+7,0.000,PH-2,Ground Squirrel
+8,0.000,PH-2,Ground Squirrel
+1,0.500,PH-2,null
+2,0.500,PH-2,Human UTI
+3,0.500,PH-2,Human
+4,0.500,PH-2,Human
+5,0.500,PH-2,Hu and Cw
+6,0.500,PH-2,Ground Squirrel
+7,0.500,PH-2,Ground Squirrel
+8,0.500,PH-2,Ground Squirrel
+1,0.900,PH-2,null
+2,0.900,PH-2,Human UTI
+3,0.900,PH-2,Human
+4,0.900,PH-2,Human
+5,0.900,PH-2,Hu and Cw
+6,0.900,PH-2,Ground Squirrel
+7,0.900,PH-2,Ground Squirrel
+8,0.900,PH-2,Ground Squirrel
+1,0.950,PH-2,null
+2,0.950,PH-2,Human UTI
+3,0.950,PH-2,Human
+4,0.950,PH-2,Human
+5,0.950,PH-2,Hu and Cw
+6,0.950,PH-2,Ground Squirrel
+7,0.950,PH-2,Ground Squirrel
+8,0.950,PH-2,Ground Squirrel
+1,0.980,PH-2,null
+2,0.980,PH-2,Human UTI
+3,0.980,PH-2,Human
+4,0.980,PH-2,Human
+5,0.980,PH-2,Hu and Cw
+6,0.980,PH-2,Ground Squirrel
+7,0.980,PH-2,Ground Squirrel
+8,0.980,PH-2,Ground Squirrel
+1,0.990,PH-2,null
+2,0.990,PH-2,Human UTI
+3,0.990,PH-2,Human
+4,0.990,PH-2,Human
+5,0.990,PH-2,Human
+6,0.990,PH-2,Human
+7,0.990,PH-2,Human
+8,0.990,PH-2,Human
+1,0.000,PH-1,null
+2,0.000,PH-1,Human UTI
+3,0.000,PH-1,Human UTI
+4,0.000,PH-1,Human UTI
+5,0.000,PH-1,Cow
+6,0.000,PH-1,Cow
+7,0.000,PH-1,Cow
+8,0.000,PH-1,Cow
+1,0.500,PH-1,null
+2,0.500,PH-1,Human UTI
+3,0.500,PH-1,Human UTI
+4,0.500,PH-1,Human UTI
+5,0.500,PH-1,Cow
+6,0.500,PH-1,Cow
+7,0.500,PH-1,Cow
+8,0.500,PH-1,Cow
+1,0.900,PH-1,null
+2,0.900,PH-1,Human UTI
+3,0.900,PH-1,Human UTI
+4,0.900,PH-1,Human UTI
+5,0.900,PH-1,Cow
+6,0.900,PH-1,Cow
+7,0.900,PH-1,Cow
+8,0.900,PH-1,Cow
+1,0.950,PH-1,null
+2,0.950,PH-1,Human UTI
+3,0.950,PH-1,Human UTI
+4,0.950,PH-1,Human UTI
+5,0.950,PH-1,Cow
+6,0.950,PH-1,Cow
+7,0.950,PH-1,Cow
+8,0.950,PH-1,Cow
+1,0.980,PH-1,null
+2,0.980,PH-1,Human UTI
+3,0.980,PH-1,Human UTI
+4,0.980,PH-1,Human UTI
+5,0.980,PH-1,Cow
+6,0.980,PH-1,Cow
+7,0.980,PH-1,Cow
+8,0.980,PH-1,Cow
+1,0.990,PH-1,null
+2,0.990,PH-1,Human UTI
+3,0.990,PH-1,Human UTI
+4,0.990,PH-1,Human UTI
+5,0.990,PH-1,Cow
+6,0.990,PH-1,Cow
+7,0.990,PH-1,Cow
+8,0.990,PH-1,Cow
+1,0.000,PH-4,null
+2,0.000,PH-4,Pigeon
+3,0.000,PH-4,Human
+4,0.000,PH-4,Cow
+5,0.000,PH-4,Human
+6,0.000,PH-4,Human
+7,0.000,PH-4,Human
+8,0.000,PH-4,Pigeon
+1,0.500,PH-4,null
+2,0.500,PH-4,Pigeon
+3,0.500,PH-4,Human
+4,0.500,PH-4,Cow
+5,0.500,PH-4,Human
+6,0.500,PH-4,Human
+7,0.500,PH-4,Human
+8,0.500,PH-4,Pigeon
+1,0.900,PH-4,null
+2,0.900,PH-4,Pigeon
+3,0.900,PH-4,Human
+4,0.900,PH-4,Cow
+5,0.900,PH-4,Human
+6,0.900,PH-4,Human
+7,0.900,PH-4,Human
+8,0.900,PH-4,Pigeon
+1,0.950,PH-4,null
+2,0.950,PH-4,Pigeon
+3,0.950,PH-4,Human
+4,0.950,PH-4,Cow
+5,0.950,PH-4,Human
+6,0.950,PH-4,Human
+7,0.950,PH-4,Human
+8,0.950,PH-4,Pigeon
+1,0.980,PH-4,null
+2,0.980,PH-4,Pigeon
+3,0.980,PH-4,Pigeon
+4,0.980,PH-4,Pigeon
+5,0.980,PH-4,Pigeon
+6,0.980,PH-4,Pigeon
+7,0.980,PH-4,Pigeon
+8,0.980,PH-4,Pigeon
+1,0.990,PH-4,null
+2,0.990,PH-4,Pigeon
+3,0.990,PH-4,Pigeon
+4,0.990,PH-4,Pigeon
+5,0.990,PH-4,Pigeon
+6,0.990,PH-4,Pigeon
+7,0.990,PH-4,Pigeon
+8,0.990,PH-4,Pigeon
+1,0.000,PH-3,null
+2,0.000,PH-3,Pigeon
+3,0.000,PH-3,Human
+4,0.000,PH-3,Human
+5,0.000,PH-3,Human
+6,0.000,PH-3,Human
+7,0.000,PH-3,Human
+8,0.000,PH-3,Human
+1,0.500,PH-3,null
+2,0.500,PH-3,Pigeon
+3,0.500,PH-3,Human
+4,0.500,PH-3,Human
+5,0.500,PH-3,Human
+6,0.500,PH-3,Human
+7,0.500,PH-3,Human
+8,0.500,PH-3,Human
+1,0.900,PH-3,null
+2,0.900,PH-3,Pigeon
+3,0.900,PH-3,Human
+4,0.900,PH-3,Human
+5,0.900,PH-3,Human
+6,0.900,PH-3,Human
+7,0.900,PH-3,Human
+8,0.900,PH-3,Human
+1,0.950,PH-3,null
+2,0.950,PH-3,Pigeon
+3,0.950,PH-3,Human
+4,0.950,PH-3,Human
+5,0.950,PH-3,Human
+6,0.950,PH-3,Human
+7,0.950,PH-3,Human
+8,0.950,PH-3,Human
+1,0.980,PH-3,null
+2,0.980,PH-3,Pigeon
+3,0.980,PH-3,Human
+4,0.980,PH-3,Human
+5,0.980,PH-3,Human
+6,0.980,PH-3,Human
+7,0.980,PH-3,Human
+8,0.980,PH-3,Human
+1,0.990,PH-3,null
+2,0.990,PH-3,Pigeon
+3,0.990,PH-3,Human
+4,0.990,PH-3,Human
+5,0.990,PH-3,Human
+6,0.990,PH-3,Human
+7,0.990,PH-3,Human
+8,0.990,PH-3,Human

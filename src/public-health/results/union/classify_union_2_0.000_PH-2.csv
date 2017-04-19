@@ -1,0 +1,5 @@
+k,alpha,unknownId,classification,pearson,isoId,species
+2,0.000,PH-2,Human UTI(2)(1.500000),0.995,Hu-1883,Human UTI
+2,0.000,PH-2,Human UTI(2)(1.500000),0.990,Cw-1311,Cow
+2,0.000,PH-2,Human UTI(2)(1.500000),0.995,Hu-1884,Human UTI
+2,0.000,PH-2,Human UTI(2)(1.500000),0.990,Pp-099,Hu and Cw
