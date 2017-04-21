@@ -1,0 +1,6 @@
+needed size,max k,alpha,unknownId,classification(count)(average position),pearson,isoId,species
+5,331,0.950,PH-5,Cow(2)(143.500000),0.993,Dg-031,Coyote
+5,331,0.950,PH-5,Cow(2)(143.500000),0.993,Cw-1792,Cow
+5,331,0.950,PH-5,Cow(2)(143.500000),0.990,Cw-1223,Cow
+5,331,0.950,PH-5,Cow(2)(143.500000),0.989,Ho-049,Horse
+5,331,0.950,PH-5,Cow(2)(143.500000),0.988,Op-003,Opossum

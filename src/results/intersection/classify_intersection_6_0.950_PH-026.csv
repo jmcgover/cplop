@@ -1,0 +1,7 @@
+needed size,max k,alpha,unknownId,classification(count)(average position),pearson,isoId,species
+6,126,0.950,PH-026,Cow(5)(27.600000),0.983,Cw-1534,Cow
+6,126,0.950,PH-026,Cow(5)(27.600000),0.981,Cw-1277,Cow
+6,126,0.950,PH-026,Cow(5)(27.600000),0.981,Ho-023,Horse
+6,126,0.950,PH-026,Cow(5)(27.600000),0.979,Cw-1377,Cow
+6,126,0.950,PH-026,Cow(5)(27.600000),0.979,Cw-1278,Cow
+6,126,0.950,PH-026,Cow(5)(27.600000),0.978,Cw-1378,Cow

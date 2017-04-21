@@ -1,0 +1,9 @@
+needed size,max k,alpha,unknownId,classification(count)(average position),pearson,isoId,species
+8,164,0.950,PH-013,Cow(5)(25.400000),0.991,Cw-1534,Cow
+8,164,0.950,PH-013,Cow(5)(25.400000),0.990,Cw-1277,Cow
+8,164,0.950,PH-013,Cow(5)(25.400000),0.990,Ho-023,Horse
+8,164,0.950,PH-013,Cow(5)(25.400000),0.988,Cw-1377,Cow
+8,164,0.950,PH-013,Cow(5)(25.400000),0.987,Cw-1278,Cow
+8,164,0.950,PH-013,Cow(5)(25.400000),0.987,Cw-1378,Cow
+8,164,0.950,PH-013,Cow(5)(25.400000),0.986,Tk-063,Wild Turkey
+8,164,0.950,PH-013,Cow(5)(25.400000),0.984,Ho-022,Horse
