@@ -97,20 +97,22 @@ $(LIB)%.class: %.java
 	$(JC) $(FLAGS) -cp $(CP) $^ -d $(LIB)
 
 #Result Folders
-union/: results/
-	mkdir -p $^$@
+results/union/:
+	mkdir -p $@
 
-mean/: results/
-	mkdir -p $^$@
+results/mean/:
+	mkdir -p $@
 
-winner/: results/
-	mkdir -p $^$@
+results/winner/:
+	mkdir -p $@
 
-intersection/: results/
-	mkdir -p $^$@
+results/intersection/:
+	mkdir -p $@
 
-results/:
-	mkdir -p results
+result_folders: results/union/ results/mean/ results/winner/ results/intersection/
+
+#results/:
+#	mkdir -p results
 
 
 clean: resultclean
